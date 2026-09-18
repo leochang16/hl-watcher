@@ -1,18 +1,94 @@
 {
- "positions": {
-  "ZEC": {
-   "entryPx": 1338.3831,
-   "lev": 5.0,
-   "liqPx": 966.2550829003,
-   "notional": 15728843.62,
-   "side": "LONG",
-   "szi": 10341.8,
-   "uPnl": 1887552.987
+ "addresses": {
+  "0x795cfd1b03eafc11c4ec958b8a94cfc9aa64a242": {
+   "positions": {
+    "HYPE": {
+     "entryPx": 65.6332,
+     "lev": 10.0,
+     "liqPx": 31.3168520792,
+     "notional": 9319514.61675,
+     "side": "LONG",
+     "szi": 106600.11,
+     "uPnl": 2323002.981302
+    },
+    "VVV": {
+     "entryPx": 24.6042,
+     "lev": 3.0,
+     "liqPx": null,
+     "notional": 637038.6574,
+     "side": "LONG",
+     "szi": 25705.7,
+     "uPnl": 4570.06678
+    }
+   },
+   "summary": {
+    "accountValue": 1759838.670422,
+    "totalNtlPos": 9956553.27415
+   },
+   "ts": 1789709481373
+  },
+  "0x9321d8117e73b0c79035f0e87debcfd8dbb1d75a": {
+   "positions": {
+    "HYPE": {
+     "entryPx": 71.7396,
+     "lev": 10.0,
+     "liqPx": 22.6427244999,
+     "notional": 17486640.0,
+     "side": "LONG",
+     "szi": 200000.0,
+     "uPnl": 3138716.93402
+    },
+    "LIT": {
+     "entryPx": 2.641761,
+     "lev": 5.0,
+     "liqPx": 2.2004015984,
+     "notional": 24679995.064,
+     "side": "LONG",
+     "szi": 4999999.0,
+     "uPnl": 11471188.202112
+    }
+   },
+   "summary": {
+    "accountValue": 8163163.850758,
+    "totalNtlPos": 42166713.9686
+   },
+   "ts": 1789709481373
+  },
+  "0xbf732ea04197942783e34730ed6e0f6099575d58": {
+   "positions": {
+    "ZEC": {
+     "entryPx": 1210.0402,
+     "lev": 10.0,
+     "liqPx": 997.4707946076,
+     "notional": 21662006.968,
+     "side": "LONG",
+     "szi": 14333.36,
+     "uPnl": 4318064.88796
+    }
+   },
+   "summary": {
+    "accountValue": 2247495.43317,
+    "totalNtlPos": 21662006.968
+   },
+   "ts": 1789709481373
+  },
+  "0xe2ad376800c2da03d611700ffc1d013090733c8c": {
+   "positions": {
+    "ZEC": {
+     "entryPx": 1338.3831,
+     "lev": 5.0,
+     "liqPx": 966.2550829003,
+     "notional": 15629562.34,
+     "side": "LONG",
+     "szi": 10341.8,
+     "uPnl": 1788271.707
+    }
+   },
+   "summary": {
+    "accountValue": 3374222.714368,
+    "totalNtlPos": 15629562.34
+   },
+   "ts": 1789709481373
   }
- },
- "summary": {
-  "accountValue": 3473503.994368,
-  "totalNtlPos": 15728843.62
- },
- "ts": 1789708484343
+ }
 }
