@@ -120,6 +120,11 @@ def money(v):
     return f"{s}${a:.0f}"
 
 
+def money_s(v):
+    """帶正負號，用於損益"""
+    return ("+" if v > 0 else "") + money(v)
+
+
 def qty(v):
     a = abs(v)
     if a >= 1000:
@@ -133,6 +138,40 @@ def px(v):
     if v is None:
         return "-"
     return f"{v:,.4f}".rstrip("0").rstrip(".") if v < 10 else f"{v:,.2f}"
+
+
+def cur_px(p):
+    """由名目與數量反推現價"""
+    sz = abs(p["szi"])
+    return p["notional"] / sz if sz else None
+
+
+def liq_gap(p, cp):
+    """強平價距現價百分比；多單為負、空單為正"""
+    lq = p.get("liqPx")
+    if not lq or not cp:
+        return None
+    return (lq - cp) / cp * 100
+
+
+def pos_detail(p, pad="　　"):
+    """單一持倉的明細行：進場 / 現價 / 未實現 / 強平"""
+    cp = cur_px(p)
+    chg = ((cp - p["entryPx"]) / p["entryPx"] * 100) if (cp and p["entryPx"]) else None
+    if p["szi"] < 0 and chg is not None:
+        chg = -chg
+    lines = [f"{pad}進場 {px(p['entryPx'])}｜現價 {px(cp)}"
+             + (f"｜{chg:+.1f}%" if chg is not None else "")]
+    lines.append(f"{pad}未實現 {money_s(p['uPnl'])}")
+    g = liq_gap(p, cp)
+    if p.get("liqPx"):
+        gs = f"（{g:+.1f}%）" if g is not None else ""
+        lines.append(f"{pad}強平 {px(p['liqPx'])}{gs}")
+    return "\n".join(lines)
+
+
+def side_zh(p):
+    return "多" if p["szi"] > 0 else "空"
 
 
 def load_state(targets):
@@ -184,28 +223,28 @@ def render_events(events):
         c = e["coin"]
         if e["kind"] == "OPEN":
             n = e["new"]
-            arrow = "🟢 開多" if n["side"] == "LONG" else "🔴 開空"
+            arrow = "🟢 開多" if n["szi"] > 0 else "🔴 開空"
             out.append(
                 f"{arrow} {c}\n"
-                f"　數量 {qty(n['szi'])}｜名目 {money(n['notional'])}\n"
-                f"　進場 {px(n['entryPx'])}｜{n['lev']:.0f}x｜強平 {px(n['liqPx'])}"
+                f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
+                + pos_detail(n, "　")
             )
         elif e["kind"] == "CLOSE":
             o = e["old"]
             pnl = e.get("pnl")
-            extra = f"\n　已實現 {money(pnl)}" if pnl is not None else ""
+            extra = f"\n　已實現 {money_s(pnl)}" if pnl is not None else ""
             out.append(
-                f"⚪ 平倉 {c}（原 {o['side']}）\n"
+                f"⚪ 平倉 {c}（原 {side_zh(o)}）\n"
                 f"　原名目 {money(o['notional'])}｜進場 {px(o['entryPx'])}{extra}"
             )
         elif e["kind"] == "FLIP":
             o, n = e["old"], e["new"]
             pnl = e.get("pnl")
-            extra = f"｜前倉已實現 {money(pnl)}" if pnl is not None else ""
+            extra = f"\n　前倉已實現 {money_s(pnl)}" if pnl is not None else ""
             out.append(
-                f"🔁 反手 {c}：{o['side']} → {n['side']}\n"
-                f"　數量 {qty(n['szi'])}｜名目 {money(n['notional'])}\n"
-                f"　進場 {px(n['entryPx'])}｜{n['lev']:.0f}x{extra}"
+                f"🔁 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
+                f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
+                + pos_detail(n, "　") + extra
             )
     return out
 
@@ -248,10 +287,14 @@ def main():
 
         old = prev.get(addr)
         if old is None:
-            desc = "、".join(
-                f"{c} {p['side']} {money(p['notional'])}" for c, p in positions.items()
-            ) or "無持倉"
-            intro.append(f"◆ {label}\n　{desc}\n　淨值 {money(summary['accountValue'])}")
+            if positions:
+                parts = []
+                for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
+                    parts.append(f"　{c} {side_zh(p)} {money(p['notional'])}\n" + pos_detail(p))
+                desc = "\n".join(parts)
+            else:
+                desc = "　無持倉"
+            intro.append(f"◆ {label}　淨值 {money(summary['accountValue'])}\n{desc}")
         else:
             evs = diff_events(addr, old.get("positions", {}), positions, old.get("ts"))
             if evs:
