@@ -1,0 +1,45 @@
+name: HL Position Watcher
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # 每 5 分鐘（GitHub 最短間隔；高峰期實際可能延遲 5-15 分）
+  workflow_dispatch:         # 允許手動觸發測試
+
+concurrency:
+  group: hl-watcher
+  cancel-in-progress: false  # 不取消，避免狀態檔寫到一半被砍
+
+permissions:
+  contents: write            # 需要寫回 state.json
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run watcher
+        env:
+          HL_ADDRESS: ${{ vars.HL_ADDRESS }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python watcher.py
+
+      - name: Commit state
+        run: |
+          if [[ -n "$(git status --porcelain state.json)" ]]; then
+            git config user.name  "hl-watcher"
+            git config user.email "hl-watcher@users.noreply.github.com"
+            git add state.json
+            git commit -m "state: $(date -u +%Y-%m-%dT%H:%MZ)"
+            for i in 1 2 3; do
+              git pull --rebase --autostash && git push && break
+              echo "push retry $i"; sleep 5
+            done
+          else
+            echo "state 無變動"
+          fi
