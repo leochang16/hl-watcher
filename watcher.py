@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hyperliquid 多地址監控 → LINE 推播
-偵測事件：開倉 / 平倉 / 反手（方向翻轉）
+偵測事件：開倉 / 平倉 / 反手 / 減倉
 不逐筆推 fill，改用持倉快照差分，一次動作只發一則。
 
 HL_ADDRESSES 格式：逗號分隔，每項 `地址` 或 `地址=標籤`
@@ -22,6 +22,7 @@ LINE_USER_ID = os.environ.get("LINE_USER_ID", "").strip()
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
 MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目視為灰塵，忽略
+REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
 
 
 def parse_targets():
@@ -202,14 +203,41 @@ def save_state(addresses):
 
 
 def diff_events(addr, old_pos, new_pos, last_ts):
+    """回報 開倉 / 平倉 / 反手 / 減倉，並在 new_pos 上寫入 peak / alerted 追蹤欄位
+
+    減倉用「累積」判斷：跟上次警示的水位比，而不是跟上一次輪詢比。
+    否則每次只減 2% 就永遠碰不到門檻，倉位會無聲流掉。
+    """
     events = []
     for coin, n in new_pos.items():
         o = old_pos.get(coin)
+        cur = abs(n["szi"])
+
         if o is None:
+            n["peak"] = cur
+            n["alerted"] = cur
             events.append({"kind": "OPEN", "coin": coin, "new": n})
-        elif (o["szi"] > 0) != (n["szi"] > 0):
+            continue
+
+        if (o["szi"] > 0) != (n["szi"] > 0):
+            n["peak"] = cur
+            n["alerted"] = cur
             events.append({"kind": "FLIP", "coin": coin, "old": o, "new": n,
                            "pnl": fetch_closed_pnl(addr, coin, last_ts)})
+            continue
+
+        prev_peak = o.get("peak") or abs(o["szi"])
+        alerted = o.get("alerted") or abs(o["szi"])
+        n["peak"] = max(prev_peak, cur)
+        if cur > alerted:          # 加倉：抬高基準，不通知
+            alerted = cur
+        if cur < alerted * (1 - REDUCE_PCT / 100):
+            events.append({"kind": "REDUCE", "coin": coin, "old": o, "new": n,
+                           "from_sz": alerted, "peak_sz": n["peak"],
+                           "pnl": fetch_closed_pnl(addr, coin, last_ts)})
+            alerted = cur
+        n["alerted"] = alerted
+
     for coin, o in old_pos.items():
         if coin not in new_pos:
             events.append({"kind": "CLOSE", "coin": coin, "old": o,
@@ -223,7 +251,7 @@ def render_events(events):
         c = e["coin"]
         if e["kind"] == "OPEN":
             n = e["new"]
-            arrow = "🟢 開多" if n["szi"] > 0 else "🔴 開空"
+            arrow = "\U0001f7e2 開多" if n["szi"] > 0 else "\U0001f534 開空"
             out.append(
                 f"{arrow} {c}\n"
                 f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
@@ -234,15 +262,30 @@ def render_events(events):
             pnl = e.get("pnl")
             extra = f"\n　已實現 {money_s(pnl)}" if pnl is not None else ""
             out.append(
-                f"⚪ 平倉 {c}（原 {side_zh(o)}）\n"
+                f"\u26aa 平倉 {c}（原 {side_zh(o)}）\n"
                 f"　原名目 {money(o['notional'])}｜進場 {px(o['entryPx'])}{extra}"
+            )
+        elif e["kind"] == "REDUCE":
+            n, o = e["new"], e["old"]
+            cur = abs(n["szi"])
+            frm, peak = e["from_sz"], e["peak_sz"]
+            step = (1 - cur / frm) * 100 if frm else 0
+            total = (1 - cur / peak) * 100 if peak else 0
+            pnl = e.get("pnl")
+            extra = f"\n　已實現 {money_s(pnl)}" if pnl is not None else ""
+            out.append(
+                f"\U0001f7e1 減倉 {c}（{side_zh(n)}）\n"
+                f"　此次 -{step:.1f}%：{qty(frm)} → {qty(cur)}\n"
+                f"　自峰值共 -{total:.1f}%（峰值 {qty(peak)}）\n"
+                f"　剩餘名目 {money(n['notional'])}\n"
+                + pos_detail(n, "　") + extra
             )
         elif e["kind"] == "FLIP":
             o, n = e["old"], e["new"]
             pnl = e.get("pnl")
             extra = f"\n　前倉已實現 {money_s(pnl)}" if pnl is not None else ""
             out.append(
-                f"🔁 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
+                f"\U0001f501 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
                 f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
                 + pos_detail(n, "　") + extra
             )
@@ -290,6 +333,8 @@ def main():
             if positions:
                 parts = []
                 for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
+                    p["peak"] = abs(p["szi"])
+                    p["alerted"] = abs(p["szi"])
                     parts.append(f"　{c} {side_zh(p)} {money(p['notional'])}\n" + pos_detail(p))
                 desc = "\n".join(parts)
             else:
@@ -309,7 +354,7 @@ def main():
     now = datetime.now(TZ).strftime("%m/%d %H:%M")
     if intro:
         line_push(f"【HL 監控 · 新增追蹤】{now}\n\n" + "\n\n".join(intro)
-                  + "\n\n之後有開倉／平倉／反手才會再通知。")
+                  + "\n\n之後有開倉／平倉／反手／減倉才會再通知。")
     if blocks:
         line_push(f"【HL 監控】{now}\n\n" + "\n\n".join(blocks))
     if not intro and not blocks:
