@@ -6,94 +6,94 @@
      "alerted": 106600.11,
      "entryPx": 65.6332,
      "lev": 10.0,
-     "liqPx": 29.9553476439,
-     "notional": 9818829.53199,
+     "liqPx": 30.7399119233,
+     "notional": 9898886.2146,
      "peak": 106600.11,
      "side": "LONG",
      "szi": 106600.11,
-     "uPnl": 2822317.896542
+     "uPnl": 2902374.579152
     },
     "SOL": {
      "alerted": 53334.01,
      "entryPx": 112.4586,
      "lev": 20.0,
-     "liqPx": 223.9425989845,
-     "notional": 5802969.624243,
+     "liqPx": 224.9861218816,
+     "notional": 5861941.0391,
      "peak": 53334.01,
      "side": "SHORT",
      "szi": -53334.01,
-     "uPnl": 194902.622857
+     "uPnl": 135931.208
     },
     "VVV": {
      "alerted": 25705.7,
      "entryPx": 24.6042,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 749835.269,
+     "notional": 723769.6892,
      "peak": 25705.7,
      "side": "LONG",
      "szi": 25705.7,
-     "uPnl": 117366.67838
+     "uPnl": 91301.09858
     }
    },
    "summary": {
-    "accountValue": 2374645.611938,
-    "totalNtlPos": 16371634.425233
+    "accountValue": 2369487.150204,
+    "totalNtlPos": 16484596.9429
    },
-   "ts": 1789919956137
+   "ts": 1789929640501
   },
   "0x9321d8117e73b0c79035f0e87debcfd8dbb1d75a": {
    "positions": {
     "BTC": {
-     "alerted": 41.17937,
+     "alerted": 30.42629,
      "entryPx": 81664.8,
      "lev": 40.0,
      "liqPx": null,
-     "notional": 3333099.38717,
+     "notional": 2471131.99493,
      "peak": 100.0,
      "side": "LONG",
-     "szi": 41.17937,
-     "uPnl": -29809.100633
+     "szi": 30.42629,
+     "uPnl": -13627.45826
     },
     "HYPE": {
      "alerted": 210000.0,
      "entryPx": 72.659,
      "lev": 10.0,
-     "liqPx": 33.5522716217,
-     "notional": 19342890.0,
+     "liqPx": 32.7778142642,
+     "notional": 19500600.0,
      "peak": 210000.0,
      "side": "LONG",
      "szi": 210000.0,
-     "uPnl": 4084490.70097
+     "uPnl": 4242200.70097
     },
     "LIT": {
      "alerted": 4999999.0,
      "entryPx": 2.641761,
      "lev": 5.0,
-     "liqPx": 2.0821845227,
-     "notional": 23390995.3218,
+     "liqPx": 2.0581558997,
+     "notional": 23608995.2782,
      "peak": 4999999.0,
      "side": "LONG",
      "szi": 4999999.0,
-     "uPnl": 10182188.459912
+     "uPnl": 10400188.416312
     },
     "PONS": {
-     "alerted": 391743.0,
-     "entryPx": 0.568882,
+     "alerted": 926561.0,
+     "entryPx": 0.577173,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 229122.64584,
-     "peak": 391743.0,
+     "notional": 531299.34301,
+     "peak": 926561.0,
      "side": "LONG",
-     "szi": 391743.0,
-     "uPnl": 6267.04524
+     "szi": 926561.0,
+     "uPnl": -3486.93413
     }
    },
    "summary": {
-    "accountValue": 7026250.796375,
-    "totalNtlPos": 46296108.74541
+    "accountValue": 7104946.299976,
+    "totalNtlPos": 46112028.02334
    },
-   "ts": 1789919956137
+   "ts": 1789929640501
   },
   "0xbf732ea04197942783e34730ed6e0f6099575d58": {
    "positions": {
@@ -101,30 +101,30 @@
      "alerted": 10000.0,
      "entryPx": 2581.71,
      "lev": 25.0,
-     "liqPx": 2131.7338173287,
-     "notional": 26144000.0,
+     "liqPx": 2115.3100949118,
+     "notional": 26328000.0,
      "peak": 10000.0,
      "side": "LONG",
      "szi": 10000.0,
-     "uPnl": 326861.80256
+     "uPnl": 510861.80256
     },
     "ZEC": {
      "alerted": 6000.0,
      "entryPx": 1446.5027,
      "lev": 10.0,
-     "liqPx": 614.652878916,
-     "notional": 8667000.0,
+     "liqPx": 583.2805140589,
+     "notional": 8838000.0,
      "peak": 6000.0,
      "side": "LONG",
      "szi": 6000.0,
-     "uPnl": -12016.43
+     "uPnl": 158983.57
     }
    },
    "summary": {
-    "accountValue": 3569840.0,
-    "totalNtlPos": 34811000.0
+    "accountValue": 3462420.0,
+    "totalNtlPos": 35166000.0
    },
-   "ts": 1789919956137
+   "ts": 1789929640501
   },
   "0xe2ad376800c2da03d611700ffc1d013090733c8c": {
    "positions": {},
@@ -132,7 +132,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1789919956137
+   "ts": 1789929640501
   }
  }
 }
