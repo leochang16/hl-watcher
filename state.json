@@ -7,190 +7,146 @@
      "entryPx": 65.6332,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 3265793.40087,
+     "notional": 3210087.786246,
      "peak": 106600.11,
      "side": "LONG",
      "szi": 36959.67,
-     "uPnl": 840010.152014
+     "uPnl": 784304.53739
     },
     "PENGU": {
      "alerted": 197341083.0,
      "entryPx": 0.010211,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 1875726.993915,
+     "notional": 1840402.940058,
      "peak": 197341083.0,
      "side": "LONG",
      "szi": 197341083.0,
-     "uPnl": -139349.994084
+     "uPnl": -174674.047941
     },
     "VVV": {
      "alerted": 23023.63,
      "entryPx": 25.4917,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 621545.91548,
+     "notional": 630041.63495,
      "peak": 29142.44,
      "side": "LONG",
      "szi": 23023.63,
-     "uPnl": 34633.903207
+     "uPnl": 43129.622677
     }
    },
    "summary": {
-    "accountValue": 1085257.680391,
-    "totalNtlPos": 5763066.310265
+    "accountValue": 1002351.645651,
+    "totalNtlPos": 5680532.361254
    },
-   "ts": 1790611278469
+   "ts": 1790632224128
   },
   "0x9321d8117e73b0c79035f0e87debcfd8dbb1d75a": {
    "positions": {
+    "ETH": {
+     "alerted": 3000.0,
+     "entryPx": 2692.36,
+     "lev": 25.0,
+     "liqPx": null,
+     "notional": 8035200.0,
+     "peak": 3000.0,
+     "side": "LONG",
+     "szi": 3000.0,
+     "uPnl": -41897.180483
+    },
     "HYPE": {
      "alerted": 210000.0,
      "entryPx": 72.659,
      "lev": 10.0,
-     "liqPx": 38.9805175312,
-     "notional": 17672200.0,
+     "liqPx": 38.4665697402,
+     "notional": 17370760.0,
      "peak": 210000.0,
      "side": "LONG",
      "szi": 200000.0,
-     "uPnl": 3140391.14424
+     "uPnl": 2838951.14424
     },
     "LIT": {
      "alerted": 4999999.0,
      "entryPx": 2.651286,
      "lev": 5.0,
-     "liqPx": 2.2304962202,
-     "notional": 21354200.0,
+     "liqPx": 2.3275893992,
+     "notional": 21620270.0,
      "peak": 4999999.0,
      "side": "LONG",
      "szi": 4900000.0,
-     "uPnl": 8362895.00195
+     "uPnl": 8628965.00195
     }
    },
    "summary": {
-    "accountValue": 6355816.217816,
-    "totalNtlPos": 39026400.0
+    "accountValue": 6362341.751385,
+    "totalNtlPos": 47026230.0
    },
-   "ts": 1790611278469
+   "ts": 1790632224128
   },
   "0xbf732ea04197942783e34730ed6e0f6099575d58": {
    "positions": {
     "AERO": {
-     "alerted": 894950.0,
+     "alerted": 313233.0,
      "entryPx": 0.823496,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 708773.5515,
+     "notional": 252979.50012,
      "peak": 894950.0,
      "side": "LONG",
-     "szi": 894950.0,
-     "uPnl": -28214.1937
+     "szi": 313233.0,
+     "uPnl": -4966.622448
     },
     "ENA": {
-     "alerted": 9288103.0,
+     "alerted": 3405638.0,
      "entryPx": 0.269477,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 2407847.82172,
+     "notional": 870464.04461,
      "peak": 9288103.0,
      "side": "LONG",
-     "szi": 9288103.0,
-     "uPnl": -95090.71072
-    },
-    "HYPE": {
-     "alerted": 45028.5,
-     "entryPx": 88.912,
-     "lev": 10.0,
-     "liqPx": null,
-     "notional": 3979123.5165,
-     "peak": 45028.5,
-     "side": "LONG",
-     "szi": 45028.5,
-     "uPnl": -24451.48229
-    },
-    "NEAR": {
-     "alerted": 579375.1,
-     "entryPx": 5.17041,
-     "lev": 10.0,
-     "liqPx": null,
-     "notional": 2849714.36686,
-     "peak": 579375.1,
-     "side": "LONG",
-     "szi": 579375.1,
-     "uPnl": -145893.47693
+     "szi": 3405638.0,
+     "uPnl": -47280.146504
     },
     "ONDO": {
-     "alerted": 1924112.0,
+     "alerted": 641371.0,
      "entryPx": 0.522165,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 989628.52496,
+     "notional": 326425.77045,
      "peak": 1924112.0,
      "side": "LONG",
-     "szi": 1924112.0,
-     "uPnl": -15077.07003
-    },
-    "PENGU": {
-     "alerted": 98843530.0,
-     "entryPx": 0.010246,
-     "lev": 5.0,
-     "liqPx": null,
-     "notional": 940397.34442,
-     "peak": 98843530.0,
-     "side": "LONG",
-     "szi": 98843530.0,
-     "uPnl": -72441.695913
+     "szi": 641371.0,
+     "uPnl": -8476.268429
     },
     "PUMP": {
      "alerted": 850043665.0,
      "entryPx": 0.004745,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 4344573.171815,
+     "notional": 4220466.796725,
      "peak": 850043665.0,
      "side": "LONG",
      "szi": 850043665.0,
-     "uPnl": 311046.777901
-    },
-    "SKY": {
-     "alerted": 9151475.0,
-     "entryPx": 0.08431,
-     "lev": 3.0,
-     "liqPx": null,
-     "notional": 710895.729475,
-     "peak": 9151475.0,
-     "side": "LONG",
-     "szi": 9151475.0,
-     "uPnl": -60673.311087
-    },
-    "UNI": {
-     "alerted": 155994.0,
-     "entryPx": 9.61923,
-     "lev": 10.0,
-     "liqPx": null,
-     "notional": 1378643.7732,
-     "peak": 155994.0,
-     "side": "LONG",
-     "szi": 155994.0,
-     "uPnl": -121899.0303
+     "uPnl": 186940.402811
     },
     "ZEC": {
-     "alerted": 5713.32,
-     "entryPx": 1568.6481,
+     "alerted": 8000.0,
+     "entryPx": 1537.6457,
      "lev": 10.0,
-     "liqPx": 502.0176595837,
-     "notional": 8752877.085168,
-     "peak": 5713.32,
+     "liqPx": 734.1338511508,
+     "notional": 11710400.0,
+     "peak": 8000.0,
      "side": "LONG",
-     "szi": 5713.32,
-     "uPnl": -209311.606832
+     "szi": 8000.0,
+     "uPnl": -590765.785
     }
    },
    "summary": {
-    "accountValue": 3146672.87793,
-    "totalNtlPos": 27062474.885618
+    "accountValue": 1797100.780829,
+    "totalNtlPos": 17380736.111905
    },
-   "ts": 1790611278469
+   "ts": 1790632224128
   },
   "0xe2ad376800c2da03d611700ffc1d013090733c8c": {
    "positions": {},
@@ -198,7 +154,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1790611278469
+   "ts": 1790632224128
   }
  }
 }
