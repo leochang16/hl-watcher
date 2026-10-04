@@ -6,83 +6,94 @@
      "alerted": 176.9553,
      "entryPx": 84819.1,
      "lev": 40.0,
-     "liqPx": 102822.2788569169,
-     "notional": 15113752.173,
+     "liqPx": 102968.7923383371,
+     "notional": 15278320.602,
      "peak": 176.9553,
      "side": "SHORT",
      "szi": -176.9553,
-     "uPnl": -104562.70364
+     "uPnl": -269131.13264
     },
     "HYPE": {
      "alerted": 36959.67,
      "entryPx": 65.6332,
      "lev": 10.0,
-     "liqPx": 1.4649570098,
-     "notional": 3338049.55572,
+     "liqPx": 5.5929170078,
+     "notional": 3342854.31282,
      "peak": 106600.11,
      "side": "LONG",
      "szi": 36959.67,
-     "uPnl": 912266.306864
+     "uPnl": 917071.063964
     },
     "PENGU": {
      "alerted": 197341083.0,
      "entryPx": 0.010211,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 1869017.397093,
+     "notional": 1892698.327053,
      "peak": 197341083.0,
      "side": "LONG",
      "szi": 197341083.0,
-     "uPnl": -146059.590906
+     "uPnl": -122378.660946
     }
    },
    "summary": {
-    "accountValue": 1631395.829661,
-    "totalNtlPos": 20320819.125813
+    "accountValue": 1495686.147784,
+    "totalNtlPos": 20513873.241873
    },
-   "ts": 1791143794613
+   "ts": 1791154147692
   },
   "0x9321d8117e73b0c79035f0e87debcfd8dbb1d75a": {
    "positions": {
+    "ENA": {
+     "alerted": 1542598.0,
+     "entryPx": 0.240458,
+     "lev": 10.0,
+     "liqPx": null,
+     "notional": 373894.90324,
+     "peak": 1542598.0,
+     "side": "LONG",
+     "szi": 1542598.0,
+     "uPnl": 2964.29951
+    },
     "HYPE": {
      "alerted": 200000.0,
      "entryPx": 74.3648,
      "lev": 10.0,
-     "liqPx": 56.378154935,
-     "notional": 18063200.0,
+     "liqPx": 56.5356151432,
+     "notional": 18088400.0,
      "peak": 222222.0,
      "side": "LONG",
      "szi": 200000.0,
-     "uPnl": 3190231.32596
+     "uPnl": 3215431.32596
     },
     "LIT": {
      "alerted": 4999999.0,
      "entryPx": 2.651286,
      "lev": 5.0,
-     "liqPx": 2.2074252693,
-     "notional": 17981040.0,
+     "liqPx": 2.2074806978,
+     "notional": 17974670.0,
      "peak": 4999999.0,
      "side": "LONG",
      "szi": 4900000.0,
-     "uPnl": 4989735.00195
+     "uPnl": 4983365.00195
     },
     "PUMP": {
-     "alerted": 544358080.0,
-     "entryPx": 0.006512,
+     "alerted": 700000000.0,
+     "entryPx": 0.006495,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 3490424.00896,
-     "peak": 544358080.0,
+     "notional": 4551400.0,
+     "peak": 700000000.0,
      "side": "LONG",
-     "szi": 544358080.0,
-     "uPnl": -54685.818133
+     "szi": 700000000.0,
+     "uPnl": 4321.385662
     }
    },
    "summary": {
-    "accountValue": 6099045.423616,
-    "totalNtlPos": 39534664.00896
+    "accountValue": 6351747.956796,
+    "totalNtlPos": 40988364.90324
    },
-   "ts": 1791143794613
+   "ts": 1791154147692
   },
   "0xbf732ea04197942783e34730ed6e0f6099575d58": {
    "positions": {
@@ -90,30 +101,30 @@
      "alerted": 2684315822.0,
      "entryPx": 0.005638,
      "lev": 10.0,
-     "liqPx": 0.0036397565,
-     "notional": 17211833.050664,
+     "liqPx": 0.0035866202,
+     "notional": 17453421.474644,
      "peak": 2684315822.0,
      "side": "LONG",
      "szi": 2684315822.0,
-     "uPnl": 2077218.829566
+     "uPnl": 2318807.253546
     },
     "ZEC": {
      "alerted": 8000.0,
      "entryPx": 1291.7059,
      "lev": 10.0,
-     "liqPx": 402.6028717613,
-     "notional": 10662400.0,
+     "liqPx": 372.5749787541,
+     "notional": 10806400.0,
      "peak": 8000.0,
      "side": "LONG",
      "szi": 8000.0,
-     "uPnl": 328752.697
+     "uPnl": 472752.697
     }
    },
    "summary": {
-    "accountValue": 4537232.196087,
-    "totalNtlPos": 27874233.050664
+    "accountValue": 4921479.740934,
+    "totalNtlPos": 28259821.474644
    },
-   "ts": 1791143794613
+   "ts": 1791154147692
   },
   "0xe2ad376800c2da03d611700ffc1d013090733c8c": {
    "positions": {},
@@ -121,7 +132,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1791143794613
+   "ts": 1791154147692
   }
  }
 }
