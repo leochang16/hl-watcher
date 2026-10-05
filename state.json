@@ -6,41 +6,41 @@
      "alerted": 176.9553,
      "entryPx": 84819.1,
      "lev": 40.0,
-     "liqPx": 103075.669653891,
-     "notional": 15350872.275,
+     "liqPx": 103069.7136686085,
+     "notional": 15325036.8012,
      "peak": 176.9553,
      "side": "SHORT",
      "szi": -176.9553,
-     "uPnl": -341682.80564
+     "uPnl": -315847.33184
     },
     "HYPE": {
      "alerted": 36959.67,
      "entryPx": 65.6332,
      "lev": 10.0,
-     "liqPx": 6.7536856352,
-     "notional": 3328587.8802,
+     "liqPx": 6.2160717197,
+     "notional": 3335129.74179,
      "peak": 106600.11,
      "side": "LONG",
      "szi": 36959.67,
-     "uPnl": 902804.631344
+     "uPnl": 909346.492934
     },
     "PENGU": {
      "alerted": 197341083.0,
      "entryPx": 0.010211,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 1928614.404159,
+     "notional": 1920523.419756,
      "peak": 197341083.0,
      "side": "LONG",
      "szi": 197341083.0,
-     "uPnl": -86462.58384
+     "uPnl": -94553.568243
     }
    },
    "summary": {
-    "accountValue": 1445161.674643,
-    "totalNtlPos": 20608074.559359
+    "accountValue": 1469448.02563,
+    "totalNtlPos": 20580689.962746
    },
-   "ts": 1791163151589
+   "ts": 1791165128163
   },
   "0x9321d8117e73b0c79035f0e87debcfd8dbb1d75a": {
    "positions": {
@@ -95,47 +95,109 @@
    },
    "ts": 1791163151589
   },
+  "0xb798aef79972ce8f73d47b9ebbcda6bbb7ec4fbf": {
+   "positions": {
+    "BTC": {
+     "alerted": 257.06409,
+     "entryPx": 86285.0,
+     "lev": 3.0,
+     "liqPx": 113779.8343394433,
+     "notional": 22262778.45036,
+     "peak": 257.06409,
+     "side": "SHORT",
+     "szi": -257.06409,
+     "uPnl": -81985.25223
+    }
+   },
+   "summary": {
+    "accountValue": 10347725.90861,
+    "totalNtlPos": 22262778.45036
+   },
+   "ts": 1791165128163
+  },
   "0xbf732ea04197942783e34730ed6e0f6099575d58": {
    "positions": {
     "PUMP": {
      "alerted": 2684315822.0,
      "entryPx": 0.005638,
      "lev": 10.0,
-     "liqPx": 0.0036221728,
-     "notional": 17308468.420256,
+     "liqPx": 0.0036693109,
+     "notional": 17120566.312716,
      "peak": 2684315822.0,
      "side": "LONG",
      "szi": 2684315822.0,
-     "uPnl": 2173854.199158
+     "uPnl": 1985952.091618
     },
     "ZEC": {
      "alerted": 8000.0,
      "entryPx": 1291.7059,
      "lev": 10.0,
-     "liqPx": 405.9234185488,
-     "notional": 10832800.0,
+     "liqPx": 430.6278671722,
+     "notional": 10716000.0,
      "peak": 8000.0,
      "side": "LONG",
      "szi": 8000.0,
-     "uPnl": 499152.697
+     "uPnl": 382352.697
     },
     "ZRO": {
      "alerted": 518282.4,
      "entryPx": 1.96913,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 1006970.87496,
+     "notional": 996682.96932,
      "peak": 518282.4,
      "side": "LONG",
      "szi": 518282.4,
-     "uPnl": -13595.11744
+     "uPnl": -23883.02308
     }
    },
    "summary": {
-    "accountValue": 2886249.165736,
-    "totalNtlPos": 29148239.295216
+    "accountValue": 2571259.152556,
+    "totalNtlPos": 28833249.282036
    },
-   "ts": 1791163151589
+   "ts": 1791165128163
+  },
+  "0xc6758a779bccee1ef0190dbe8292fdf44076795d": {
+   "positions": {
+    "HYPE": {
+     "alerted": 25462.17,
+     "entryPx": 81.1919,
+     "lev": 9.0,
+     "liqPx": 70.2932649137,
+     "notional": 2297400.67476,
+     "peak": 25462.17,
+     "side": "LONG",
+     "szi": 25462.17,
+     "uPnl": 230076.945887
+    },
+    "SOL": {
+     "alerted": 8351.74,
+     "entryPx": 96.7028,
+     "lev": 15.0,
+     "liqPx": 87.9683106629,
+     "notional": 1010644.0574,
+     "peak": 8351.74,
+     "side": "LONG",
+     "szi": 8351.74,
+     "uPnl": 203006.800947
+    },
+    "TRUMP": {
+     "alerted": 116463.2,
+     "entryPx": 2.14184,
+     "lev": 2.0,
+     "liqPx": 3.0602858375,
+     "notional": 240426.63008,
+     "peak": 116463.2,
+     "side": "SHORT",
+     "szi": -116463.2,
+     "uPnl": 9019.00633
+    }
+   },
+   "summary": {
+    "accountValue": 1025199.962247,
+    "totalNtlPos": 3548471.36224
+   },
+   "ts": 1791165128163
   },
   "0xe2ad376800c2da03d611700ffc1d013090733c8c": {
    "positions": {},
