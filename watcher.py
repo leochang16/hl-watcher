@@ -90,23 +90,54 @@ def fetch_state(addr):
     return positions, summary
 
 
-def fetch_closed_pnl(addr, coin, since_ms):
-    try:
-        fills = hl_info({"type": "userFills", "user": addr, "aggregateByTime": True})
-    except Exception:
-        return None
+_FILL_CACHE = {}
+
+
+def fetch_fills_since(addr, since_ms):
+    """用時間區間抓成交，必要時分頁。
+
+    比 userFills 完整：userFills 會截斷且 aggregateByTime 會併掉同秒成交，
+    實測同一地址 userFills 只給 1,236 筆／$865K，分頁抓給 10,139 筆／$1.08M。
+    """
+    key = (addr, since_ms)
+    if key in _FILL_CACHE:
+        return _FILL_CACHE[key]
+    out, cur = [], int(since_ms or 0)
+    for _ in range(5):                      # 上限 5 頁，避免異常時打爆
+        try:
+            chunk = hl_info({"type": "userFillsByTime", "user": addr, "startTime": cur})
+        except Exception as e:
+            print(f"[warn] 抓成交失敗 {addr[:10]}: {e}", file=sys.stderr)
+            break
+        if not chunk:
+            break
+        out.extend(chunk)
+        if len(chunk) < 2000:
+            break
+        cur = chunk[-1]["time"] + 1
+    dedup = {}
+    for f in out:
+        dedup[f.get("tid") or (f.get("time"), f.get("coin"), f.get("px"), f.get("sz"))] = f
+    res = list(dedup.values())
+    _FILL_CACHE[key] = res
+    return res
+
+
+def closed_stats(addr, coin, since_ms):
+    """回傳 (已實現損益, 平掉數量)；查不到回 (None, None)"""
+    fills = fetch_fills_since(addr, since_ms)
     total = 0.0
+    sz = 0.0
     hit = False
-    for f in fills or []:
+    for f in fills:
         if f.get("coin") != coin:
-            continue
-        if since_ms and f.get("time", 0) < since_ms:
             continue
         d = f.get("dir", "")
         if "Close" in d or "Long > Short" in d or "Short > Long" in d:
             total += float(f.get("closedPnl", 0) or 0)
+            sz += abs(float(f.get("sz", 0) or 0))
             hit = True
-    return total if hit else None
+    return (total, sz) if hit else (None, None)
 
 
 def money(v):
@@ -222,8 +253,9 @@ def diff_events(addr, old_pos, new_pos, last_ts):
         if (o["szi"] > 0) != (n["szi"] > 0):
             n["peak"] = cur
             n["alerted"] = cur
+            pnl, csz = closed_stats(addr, coin, last_ts)
             events.append({"kind": "FLIP", "coin": coin, "old": o, "new": n,
-                           "pnl": fetch_closed_pnl(addr, coin, last_ts)})
+                           "pnl": pnl, "fill_sz": csz, "want_sz": abs(o["szi"])})
             continue
 
         prev_peak = o.get("peak") or abs(o["szi"])
@@ -232,17 +264,31 @@ def diff_events(addr, old_pos, new_pos, last_ts):
         if cur > alerted:          # 加倉：抬高基準，不通知
             alerted = cur
         if cur < alerted * (1 - REDUCE_PCT / 100):
+            pnl, csz = closed_stats(addr, coin, last_ts)
             events.append({"kind": "REDUCE", "coin": coin, "old": o, "new": n,
                            "from_sz": alerted, "peak_sz": n["peak"],
-                           "pnl": fetch_closed_pnl(addr, coin, last_ts)})
+                           "pnl": pnl, "fill_sz": csz, "want_sz": alerted - cur})
             alerted = cur
         n["alerted"] = alerted
 
     for coin, o in old_pos.items():
         if coin not in new_pos:
+            pnl, csz = closed_stats(addr, coin, last_ts)
             events.append({"kind": "CLOSE", "coin": coin, "old": o,
-                           "pnl": fetch_closed_pnl(addr, coin, last_ts)})
+                           "pnl": pnl, "fill_sz": csz, "want_sz": abs(o["szi"])})
     return events
+
+
+def pnl_line(e, label):
+    """損益行；成交紀錄涵蓋不到倉位變化量時標警告"""
+    pnl = e.get("pnl")
+    if pnl is None:
+        return ""
+    line = f"\n　{label} {money_s(pnl)}"
+    want, got = e.get("want_sz"), e.get("fill_sz")
+    if want and got is not None and got < want * 0.9:
+        line += f"\n　\u26a0 成交紀錄只涵蓋 {qty(got)}／{qty(want)}，金額可能不完整"
+    return line
 
 
 def render_events(events):
@@ -259,8 +305,7 @@ def render_events(events):
             )
         elif e["kind"] == "CLOSE":
             o = e["old"]
-            pnl = e.get("pnl")
-            extra = f"\n　已實現 {money_s(pnl)}" if pnl is not None else ""
+            extra = pnl_line(e, "已實現")
             out.append(
                 f"\u26aa 平倉 {c}（原 {side_zh(o)}）\n"
                 f"　原名目 {money(o['notional'])}｜進場 {px(o['entryPx'])}{extra}"
@@ -271,8 +316,7 @@ def render_events(events):
             frm, peak = e["from_sz"], e["peak_sz"]
             step = (1 - cur / frm) * 100 if frm else 0
             total = (1 - cur / peak) * 100 if peak else 0
-            pnl = e.get("pnl")
-            extra = f"\n　已實現 {money_s(pnl)}" if pnl is not None else ""
+            extra = pnl_line(e, "已實現")
             out.append(
                 f"\U0001f7e1 減倉 {c}（{side_zh(n)}）\n"
                 f"　此次 -{step:.1f}%：{qty(frm)} → {qty(cur)}\n"
@@ -282,8 +326,7 @@ def render_events(events):
             )
         elif e["kind"] == "FLIP":
             o, n = e["old"], e["new"]
-            pnl = e.get("pnl")
-            extra = f"\n　前倉已實現 {money_s(pnl)}" if pnl is not None else ""
+            extra = pnl_line(e, "前倉已實現")
             out.append(
                 f"\U0001f501 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
                 f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
