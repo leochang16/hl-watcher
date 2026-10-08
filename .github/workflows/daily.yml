@@ -1,0 +1,31 @@
+name: HL Daily Summary
+
+on:
+  schedule:
+    - cron: '0 0 * * *'      # 00:00 UTC = 台北 08:00
+  workflow_dispatch:
+
+concurrency:
+  group: hl-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: read             # 只讀倉位、不寫 state.json
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Push daily summary
+        env:
+          SUMMARY: '1'
+          HL_ADDRESSES: ${{ vars.HL_ADDRESSES }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python watcher.py
