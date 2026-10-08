@@ -22,6 +22,7 @@ LINE_USER_ID = os.environ.get("LINE_USER_ID", "").strip()
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
 MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目視為灰塵，忽略
+SUMMARY = os.environ.get("SUMMARY", "").lower() in ("1", "true", "yes")
 REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
 
 
@@ -187,19 +188,18 @@ def liq_gap(p, cp):
 
 
 def pos_detail(p, pad="　　"):
-    """單一持倉的明細行：進場 / 現價 / 未實現 / 強平"""
+    """明細只留兩個數字：進場價、現價（含漲跌幅）"""
     cp = cur_px(p)
     chg = ((cp - p["entryPx"]) / p["entryPx"] * 100) if (cp and p["entryPx"]) else None
     if p["szi"] < 0 and chg is not None:
         chg = -chg
-    lines = [f"{pad}進場 {px(p['entryPx'])}｜現價 {px(cp)}"
-             + (f"｜{chg:+.1f}%" if chg is not None else "")]
-    lines.append(f"{pad}未實現 {money_s(p['uPnl'])}")
-    g = liq_gap(p, cp)
-    if p.get("liqPx"):
-        gs = f"（{g:+.1f}%）" if g is not None else ""
-        lines.append(f"{pad}強平 {px(p['liqPx'])}{gs}")
-    return "\n".join(lines)
+    return (f"{pad}進場 {px(p['entryPx'])}｜現價 {px(cp)}"
+            + (f"｜{chg:+.1f}%" if chg is not None else ""))
+
+
+def size_line(p):
+    """「買多少」：數量 + 名目"""
+    return f"{qty(abs(p['szi']))}（{money(p['notional'])}）"
 
 
 def side_zh(p):
@@ -284,10 +284,11 @@ def pnl_line(e, label):
     pnl = e.get("pnl")
     if pnl is None:
         return ""
-    line = f"\n　{label} {money_s(pnl)}"
+    line = f"\n\u3000{label} {money_s(pnl)}"
     want, got = e.get("want_sz"), e.get("fill_sz")
     if want and got is not None and got < want * 0.9:
-        line += f"\n　\u26a0 成交紀錄只涵蓋 {qty(got)}／{qty(want)}，金額可能不完整"
+        line += (f"\n\u3000\u26a0 \u6210\u4ea4\u7d00\u9304\u53ea\u6db5\u84cb {qty(got)}"
+                 f"\uff0f{qty(want)}\uff0c\u91d1\u984d\u53ef\u80fd\u4e0d\u5b8c\u6574")
     return line
 
 
@@ -300,7 +301,7 @@ def render_events(events):
             arrow = "\U0001f7e2 開多" if n["szi"] > 0 else "\U0001f534 開空"
             out.append(
                 f"{arrow} {c}\n"
-                f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
+                f"　{size_line(n)}\n"
                 + pos_detail(n, "　")
             )
         elif e["kind"] == "CLOSE":
@@ -308,7 +309,7 @@ def render_events(events):
             extra = pnl_line(e, "已實現")
             out.append(
                 f"\u26aa 平倉 {c}（原 {side_zh(o)}）\n"
-                f"　原名目 {money(o['notional'])}｜進場 {px(o['entryPx'])}{extra}"
+                f"　原 {size_line(o)}｜進場 {px(o['entryPx'])}{extra}"
             )
         elif e["kind"] == "REDUCE":
             n, o = e["new"], e["old"]
@@ -321,7 +322,7 @@ def render_events(events):
                 f"\U0001f7e1 減倉 {c}（{side_zh(n)}）\n"
                 f"　此次 -{step:.1f}%：{qty(frm)} → {qty(cur)}\n"
                 f"　自峰值共 -{total:.1f}%（峰值 {qty(peak)}）\n"
-                f"　剩餘名目 {money(n['notional'])}\n"
+                f"　剩餘 {size_line(n)}\n"
                 + pos_detail(n, "　") + extra
             )
         elif e["kind"] == "FLIP":
@@ -329,7 +330,7 @@ def render_events(events):
             extra = pnl_line(e, "前倉已實現")
             out.append(
                 f"\U0001f501 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
-                f"　名目 {money(n['notional'])}｜數量 {qty(n['szi'])}\n"
+                f"　{size_line(n)}\n"
                 + pos_detail(n, "　") + extra
             )
     return out
@@ -351,11 +352,43 @@ def line_push(text):
         sys.exit(1)
 
 
+def daily_summary(targets):
+    """每日持倉快照；只讀，不寫 state.json，不影響事件偵測"""
+    blocks, failed = [], []
+    for addr, label in targets:
+        try:
+            positions, summary = fetch_state(addr)
+        except Exception as e:
+            print(f"[error] {label} 抓取失敗: {e}", file=sys.stderr)
+            failed.append(label)
+            continue
+        if positions:
+            rows = []
+            for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
+                rows.append(f"　{c} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
+            body = "\n".join(rows)
+        else:
+            body = "　無持倉"
+        blocks.append(f"◆ {label}　淨值 {money(summary['accountValue'])}\n{body}")
+    if not blocks:
+        print("[warn] 彙總無資料，不推播", file=sys.stderr)
+        return
+    now = datetime.now(TZ).strftime("%m/%d")
+    text = f"【HL 每日持倉】{now}\n\n" + "\n\n".join(blocks)
+    if failed:
+        text += "\n\n（本次未取得：" + "、".join(failed) + "）"
+    line_push(text)
+
+
 def main():
     targets = parse_targets()
     if not targets:
         print("[fatal] 未設定 HL_ADDRESSES", file=sys.stderr)
         sys.exit(1)
+
+    if SUMMARY:
+        daily_summary(targets)
+        return
 
     prev = load_state(targets)
     now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
@@ -378,7 +411,7 @@ def main():
                 for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
                     p["peak"] = abs(p["szi"])
                     p["alerted"] = abs(p["szi"])
-                    parts.append(f"　{c} {side_zh(p)} {money(p['notional'])}\n" + pos_detail(p))
+                    parts.append(f"　{c} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
                 desc = "\n".join(parts)
             else:
                 desc = "　無持倉"
