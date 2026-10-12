@@ -392,7 +392,8 @@ def main():
 
     prev = load_state(targets)
     now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
-    new_state = dict(prev)
+    keep = {a for a, _ in targets}
+    new_state = {a: v for a, v in prev.items() if a in keep}  # 移出名單的地址順便清掉
 
     blocks, intro, failed = [], [], []
 
