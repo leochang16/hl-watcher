@@ -25,6 +25,9 @@ MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目�
 SUMMARY = os.environ.get("SUMMARY", "").lower() in ("1", "true", "yes")
 REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
 
+DEXES = ["", "xyz"]            # 主盤 + xyz（美股／商品永續，獨立結算）
+STATE_VER = 2                  # 2 = 已納入 xyz dex
+
 
 def parse_targets():
     raw = os.environ.get("HL_ADDRESSES", "") or os.environ.get("HL_ADDRESS", "")
@@ -66,28 +69,38 @@ def hl_info(payload, retries=3):
 
 
 def fetch_state(addr):
-    d = hl_info({"type": "clearinghouseState", "user": addr})
-    ms = d.get("marginSummary", {})
+    """主盤 + xyz dex 一起抓；xyz 的幣名本身就帶 `xyz:` 前綴，不會撞 key"""
     positions = {}
-    for ap in d.get("assetPositions", []):
-        p = ap["position"]
-        szi = float(p["szi"])
-        nv = float(p["positionValue"])
-        if szi == 0 or nv < MIN_NOTIONAL:
+    acct = 0.0
+    ntl = 0.0
+    for dex in DEXES:
+        q = {"type": "clearinghouseState", "user": addr}
+        if dex:
+            q["dex"] = dex
+        try:
+            d = hl_info(q)
+        except Exception as e:
+            print(f"[warn] {dex or '主盤'} 抓取失敗 {addr[:10]}: {e}", file=sys.stderr)
             continue
-        positions[p["coin"]] = {
-            "szi": szi,
-            "side": "LONG" if szi > 0 else "SHORT",
-            "entryPx": float(p["entryPx"]),
-            "notional": nv,
-            "uPnl": float(p["unrealizedPnl"]),
-            "lev": float(p["leverage"]["value"]),
-            "liqPx": float(p["liquidationPx"]) if p.get("liquidationPx") else None,
-        }
-    summary = {
-        "accountValue": float(ms.get("accountValue", 0)),
-        "totalNtlPos": float(ms.get("totalNtlPos", 0)),
-    }
+        ms = d.get("marginSummary", {})
+        acct += float(ms.get("accountValue", 0) or 0)
+        ntl += float(ms.get("totalNtlPos", 0) or 0)
+        for ap in d.get("assetPositions", []):
+            p = ap["position"]
+            szi = float(p["szi"])
+            nv = float(p["positionValue"])
+            if szi == 0 or nv < MIN_NOTIONAL:
+                continue
+            positions[p["coin"]] = {
+                "szi": szi,
+                "side": "LONG" if szi > 0 else "SHORT",
+                "entryPx": float(p["entryPx"]),
+                "notional": nv,
+                "uPnl": float(p["unrealizedPnl"]),
+                "lev": float(p["leverage"]["value"]),
+                "liqPx": float(p["liquidationPx"]) if p.get("liquidationPx") else None,
+            }
+    summary = {"accountValue": acct, "totalNtlPos": ntl}
     return positions, summary
 
 
@@ -202,6 +215,13 @@ def size_line(p):
     return f"{qty(abs(p['szi']))}（{money(p['notional'])}）"
 
 
+def coin_label(coin):
+    """🪙 = 幣圈永續（主盤）／📈 = xyz dex 的美股、商品永續"""
+    if ":" in coin:
+        return "📈 " + coin.split(":", 1)[1]
+    return "🪙 " + coin
+
+
 def side_zh(p):
     return "多" if p["szi"] > 0 else "空"
 
@@ -300,7 +320,7 @@ def render_events(events):
             n = e["new"]
             arrow = "\U0001f7e2 開多" if n["szi"] > 0 else "\U0001f534 開空"
             out.append(
-                f"{arrow} {c}\n"
+                f"{arrow} {coin_label(c)}\n"
                 f"　{size_line(n)}\n"
                 + pos_detail(n, "　")
             )
@@ -308,7 +328,7 @@ def render_events(events):
             o = e["old"]
             extra = pnl_line(e, "已實現")
             out.append(
-                f"\u26aa 平倉 {c}（原 {side_zh(o)}）\n"
+                f"\u26aa 平倉 {coin_label(c)}（原 {side_zh(o)}）\n"
                 f"　原 {size_line(o)}｜進場 {px(o['entryPx'])}{extra}"
             )
         elif e["kind"] == "REDUCE":
@@ -319,7 +339,7 @@ def render_events(events):
             total = (1 - cur / peak) * 100 if peak else 0
             extra = pnl_line(e, "已實現")
             out.append(
-                f"\U0001f7e1 減倉 {c}（{side_zh(n)}）\n"
+                f"\U0001f7e1 減倉 {coin_label(c)}（{side_zh(n)}）\n"
                 f"　此次 -{step:.1f}%：{qty(frm)} → {qty(cur)}\n"
                 f"　自峰值共 -{total:.1f}%（峰值 {qty(peak)}）\n"
                 f"　剩餘 {size_line(n)}\n"
@@ -329,7 +349,7 @@ def render_events(events):
             o, n = e["old"], e["new"]
             extra = pnl_line(e, "前倉已實現")
             out.append(
-                f"\U0001f501 反手 {c}：{side_zh(o)} → {side_zh(n)}\n"
+                f"\U0001f501 反手 {coin_label(c)}：{side_zh(o)} → {side_zh(n)}\n"
                 f"　{size_line(n)}\n"
                 + pos_detail(n, "　") + extra
             )
@@ -365,7 +385,7 @@ def daily_summary(targets):
         if positions:
             rows = []
             for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
-                rows.append(f"　{c} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
+                rows.append(f"　{coin_label(c)} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
             body = "\n".join(rows)
         else:
             body = "　無持倉"
@@ -406,13 +426,19 @@ def main():
             continue
 
         old = prev.get(addr)
+        if old is not None and old.get("v") != STATE_VER:
+            # 首次納入 xyz dex：把既有的 xyz 部位當成「本來就有」，避免誤報開倉
+            op = old.setdefault("positions", {})
+            for k, v in positions.items():
+                if ":" in k and k not in op:
+                    op[k] = dict(v, peak=abs(v["szi"]), alerted=abs(v["szi"]))
         if old is None:
             if positions:
                 parts = []
                 for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
                     p["peak"] = abs(p["szi"])
                     p["alerted"] = abs(p["szi"])
-                    parts.append(f"　{c} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
+                    parts.append(f"　{coin_label(c)} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
                 desc = "\n".join(parts)
             else:
                 desc = "　無持倉"
@@ -426,7 +452,7 @@ def main():
                     f"｜總名目 {money(summary['totalNtlPos'])}"
                 )
 
-        new_state[addr] = {"ts": now_ms, "positions": positions, "summary": summary}
+        new_state[addr] = {"ts": now_ms, "v": STATE_VER, "positions": positions, "summary": summary}
 
     now = datetime.now(TZ).strftime("%m/%d %H:%M")
     if intro:
