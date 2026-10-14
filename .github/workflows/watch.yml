@@ -2,7 +2,7 @@ name: HL Position Watcher
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # 每 5 分鐘（GitHub 最短間隔；高峰期實際可能延遲 5-15 分）
+    - cron: '37 * * * *'    # 每小時一次（固定在 :37，避開整點壅塞）
   workflow_dispatch:         # 允許手動觸發測試
 
 concurrency:
