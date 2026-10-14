@@ -154,6 +154,28 @@ def closed_stats(addr, coin, since_ms):
     return (total, sz) if hit else (None, None)
 
 
+def last_trade_days(addr):
+    """距離最後一筆成交幾天；查不到回 None。userFills 只回最近的，拿來抓時間戳剛好夠用"""
+    try:
+        fills = hl_info({"type": "userFills", "user": addr})
+    except Exception as e:
+        print(f"[warn] 查最後成交失敗 {addr[:10]}: {e}", file=sys.stderr)
+        return None
+    if not fills:
+        return None
+    last = max(f["time"] for f in fills)
+    now = datetime.now(timezone.utc).timestamp() * 1000
+    return max(0.0, (now - last) / 86400000)
+
+
+def idle_tag(days):
+    if days is None:
+        return ""
+    if days < 1:
+        return "　（今天有動）"
+    return f"　（{days:.0f} 天沒動）"
+
+
 def money(v):
     a = abs(v)
     s = "-" if v < 0 else ""
@@ -389,7 +411,8 @@ def daily_summary(targets):
             body = "\n".join(rows)
         else:
             body = "　無持倉"
-        blocks.append(f"◆ {label}　淨值 {money(summary['accountValue'])}\n{body}")
+        idle = idle_tag(last_trade_days(addr))
+        blocks.append(f"◆ {label}　淨值 {money(summary['accountValue'])}{idle}\n{body}")
     if not blocks:
         print("[warn] 彙總無資料，不推播", file=sys.stderr)
         return
