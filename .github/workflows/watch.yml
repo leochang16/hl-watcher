@@ -2,19 +2,20 @@ name: HL Position Watcher
 
 on:
   schedule:
-    - cron: '37 * * * *'    # 每小時一次（固定在 :37，避開整點壅塞）
-  workflow_dispatch:         # 允許手動觸發測試
+    - cron: '37 * * * *'      # 迴圈跑完或中斷時，由排程把下一輪接上
+  workflow_dispatch:
 
 concurrency:
   group: hl-watcher
-  cancel-in-progress: false  # 不取消，避免狀態檔寫到一半被砍
+  cancel-in-progress: false   # 不砍進行中的迴圈，新的排在後面等
 
 permissions:
-  contents: write            # 需要寫回 state.json
+  contents: write             # 需要寫回 state.json
 
 jobs:
   watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -22,24 +23,39 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run watcher
+      - name: Watch loop
         env:
           HL_ADDRESSES: ${{ vars.HL_ADDRESSES }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-        run: python watcher.py
-
-      - name: Commit state
         run: |
-          if [[ -n "$(git status --porcelain state.json)" ]]; then
-            git config user.name  "hl-watcher"
-            git config user.email "hl-watcher@users.noreply.github.com"
-            git add state.json
-            git commit -m "state: $(date -u +%Y-%m-%dT%H:%MZ)"
-            for i in 1 2 3; do
-              git pull --rebase --autostash && git push && break
-              echo "push retry $i"; sleep 5
-            done
-          else
-            echo "state 無變動"
-          fi
+          set -u
+          git config user.name  "hl-watcher"
+          git config user.email "hl-watcher@users.noreply.github.com"
+
+          save_state() {
+            if [[ -n "$(git status --porcelain state.json)" ]]; then
+              git add state.json
+              git commit -q -m "state: $(date -u +%Y-%m-%dT%H:%MZ)"
+              for i in 1 2 3; do
+                git pull --rebase --autostash -q && git push -q && return 0
+                echo "push retry $i"; sleep 5
+              done
+              echo "push 失敗，狀態留在本機，下一輪再試"
+            fi
+          }
+
+          END=$(( $(date +%s) + 340*60 ))
+          ROUND=0
+          while [ "$(date +%s)" -lt "$END" ]; do
+            ROUND=$((ROUND+1))
+            echo "--- round $ROUND  $(date -u +%H:%M:%SZ) ---"
+            git pull --rebase --autostash -q || echo "pull 失敗，沿用現有版本"
+            python watcher.py || echo "watcher 這輪失敗，下一輪重試"
+            # 每 12 輪（約一小時）存一次檔，避免 commit 洗版
+            if (( ROUND % 12 == 0 )); then save_state; fi
+            sleep 300
+          done
+
+          save_state                      # 收工前把最後狀態寫回去
+          echo "迴圈結束（跑了 $ROUND 輪），等排程接下一輪"
