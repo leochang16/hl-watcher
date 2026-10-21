@@ -21,12 +21,14 @@ LINE_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "").strip()
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "").strip()
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
-MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "500000"))  # 低於此名目視為灰塵，忽略
+MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目完全不追蹤
+ALERT_MIN = float(os.environ.get("ALERT_MIN", "500000"))  # 低於此名目不通知、不列彙總，但仍追蹤
+                                                          # （兩段式：追蹤門檻低、通知門檻高，部位在門檻附近來回才不會誤報平倉）
 SUMMARY = os.environ.get("SUMMARY", "").lower() in ("1", "true", "yes")
 REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
 
 DEXES = ["", "xyz"]            # 主盤 + xyz（美股／商品永續，獨立結算）
-STATE_VER = 3                  # 2 = 納入 xyz dex；3 = 灰塵門檻提高到 $500K
+STATE_VER = 4                  # 2 = 納入 xyz dex；3 = 門檻提高；4 = 改回兩段式門檻
 
 
 def parse_targets():
@@ -407,8 +409,10 @@ def daily_summary(targets):
         if positions:
             rows = []
             for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
+                if p["notional"] < ALERT_MIN:
+                    continue
                 rows.append(f"　{coin_label(c)} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
-            body = "\n".join(rows)
+            body = "\n".join(rows) if rows else "　無持倉"
         else:
             body = "　無持倉"
         idle = idle_tag(last_trade_days(addr))
@@ -450,20 +454,19 @@ def main():
 
         old = prev.get(addr)
         if old is not None and old.get("v") != STATE_VER:
-            # 首次納入 xyz dex：把既有的 xyz 部位當成「本來就有」，避免誤報開倉
+            # 改版遷移：現在有的部位一律當成「本來就有」，避免換門檻那一輪誤報開倉
             op = old.setdefault("positions", {})
             for k, v in positions.items():
-                if ":" in k and k not in op:
+                if k not in op:
                     op[k] = dict(v, peak=abs(v["szi"]), alerted=abs(v["szi"]))
-            # 門檻提高後，舊紀錄裡低於門檻的灰塵部位直接忘掉，避免誤報平倉
-            for k in [k for k, v in op.items() if v.get("notional", 0) < MIN_NOTIONAL]:
-                del op[k]
         if old is None:
             if positions:
                 parts = []
                 for c, p in sorted(positions.items(), key=lambda kv: -kv[1]["notional"]):
                     p["peak"] = abs(p["szi"])
                     p["alerted"] = abs(p["szi"])
+                    if p["notional"] < ALERT_MIN:
+                        continue
                     parts.append(f"　{coin_label(c)} {side_zh(p)} {size_line(p)}\n" + pos_detail(p))
                 desc = "\n".join(parts)
             else:
@@ -471,6 +474,10 @@ def main():
             intro.append(f"◆ {label}　淨值 {money(summary['accountValue'])}\n{desc}")
         else:
             evs = diff_events(addr, old.get("positions", {}), positions, old.get("ts"))
+            # 小部位只追蹤不通知：新舊名目都沒到通知門檻就略過
+            evs = [e for e in evs
+                   if max((e.get("old") or {}).get("notional", 0),
+                          (e.get("new") or {}).get("notional", 0)) >= ALERT_MIN]
             if evs:
                 body = "\n\n".join(render_events(evs))
                 blocks.append(
