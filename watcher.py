@@ -21,12 +21,12 @@ LINE_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "").strip()
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "").strip()
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
-MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目視為灰塵，忽略
+MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "500000"))  # 低於此名目視為灰塵，忽略
 SUMMARY = os.environ.get("SUMMARY", "").lower() in ("1", "true", "yes")
 REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
 
 DEXES = ["", "xyz"]            # 主盤 + xyz（美股／商品永續，獨立結算）
-STATE_VER = 2                  # 2 = 已納入 xyz dex
+STATE_VER = 3                  # 2 = 納入 xyz dex；3 = 灰塵門檻提高到 $500K
 
 
 def parse_targets():
@@ -455,6 +455,9 @@ def main():
             for k, v in positions.items():
                 if ":" in k and k not in op:
                     op[k] = dict(v, peak=abs(v["szi"]), alerted=abs(v["szi"]))
+            # 門檻提高後，舊紀錄裡低於門檻的灰塵部位直接忘掉，避免誤報平倉
+            for k in [k for k, v in op.items() if v.get("notional", 0) < MIN_NOTIONAL]:
+                del op[k]
         if old is None:
             if positions:
                 parts = []
