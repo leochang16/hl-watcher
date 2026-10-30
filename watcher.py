@@ -383,7 +383,7 @@ def render_events(events):
 def line_push(text):
     if DRY_RUN or not LINE_TOKEN or not LINE_USER_ID:
         print("[dry-run] 不推播，訊息內容：\n" + text + "\n" + "-" * 40)
-        return
+        return True
     try:
         post_json(
             LINE_PUSH_API,
@@ -391,9 +391,16 @@ def line_push(text):
             headers={"Authorization": f"Bearer {LINE_TOKEN}"},
         )
         print("[ok] LINE 已推播")
+        return True
     except urllib.error.HTTPError as e:
-        print(f"[error] LINE 推播失敗 {e.code}: {e.read().decode()[:500]}", file=sys.stderr)
-        sys.exit(1)
+        body = e.read().decode()[:500]
+        print(f"[error] LINE 推播失敗 {e.code}: {body}", file=sys.stderr)
+        if e.code == 429:
+            print("[error] 額度用完，這則訊息放棄；狀態照常存檔，避免每輪重試同一則", file=sys.stderr)
+        return False
+    except Exception as e:
+        print(f"[error] LINE 推播異常: {e}", file=sys.stderr)
+        return False
 
 
 def daily_summary(targets):
