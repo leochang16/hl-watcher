@@ -7,667 +7,667 @@
      "entryPx": 0.05044,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 10228.453912,
+     "notional": 10307.658648,
      "peak": 380792.0,
      "side": "LONG",
      "szi": 380792.0,
-     "uPnl": -8978.967699
+     "uPnl": -8899.762963
     },
     "ADA": {
      "alerted": 276121.0,
      "entryPx": 0.253511,
      "lev": 10.0,
-     "liqPx": 5.1363565588,
-     "notional": 53365.90567,
+     "liqPx": 5.1458565373,
+     "notional": 53664.11635,
      "peak": 276121.0,
      "side": "SHORT",
      "szi": -276121.0,
-     "uPnl": 16633.81644
+     "uPnl": 16335.60576
     },
     "ALGO": {
      "alerted": 414813.0,
      "entryPx": 0.120535,
      "lev": 5.0,
-     "liqPx": 3.2351577609,
-     "notional": 39135.947298,
+     "liqPx": 3.2412177719,
+     "notional": 39430.464528,
      "peak": 414813.0,
      "side": "SHORT",
      "szi": -414813.0,
-     "uPnl": 10863.870702
+     "uPnl": 10569.353472
     },
     "APE": {
      "alerted": 46948.3,
      "entryPx": 0.1704,
      "lev": 5.0,
-     "liqPx": 27.8649289719,
-     "notional": 5361.49586,
+     "liqPx": 27.9136391417,
+     "notional": 5429.101412,
      "peak": 46948.3,
      "side": "SHORT",
      "szi": -46948.3,
-     "uPnl": 2638.49446
+     "uPnl": 2570.888908
     },
     "APT": {
      "alerted": 49220.86,
      "entryPx": 0.8532,
      "lev": 10.0,
-     "liqPx": 28.3741097112,
-     "notional": 31708.078012,
+     "liqPx": 28.4295444178,
+     "notional": 32111.689064,
      "peak": 49220.86,
      "side": "SHORT",
      "szi": -49220.86,
-     "uPnl": 10291.907478
+     "uPnl": 9888.296426
     },
     "AR": {
      "alerted": 8433.66,
      "entryPx": 4.3755,
      "lev": 5.0,
-     "liqPx": 157.6574049216,
-     "notional": 26779.400598,
+     "liqPx": 157.9516473903,
+     "notional": 27041.687424,
      "peak": 8433.66,
      "side": "SHORT",
      "szi": -8433.66,
-     "uPnl": 10122.479426
+     "uPnl": 9860.1926
     },
     "ARB": {
      "alerted": 667300.2,
      "entryPx": 0.20351,
      "lev": 10.0,
-     "liqPx": 2.2063512702,
-     "notional": 107408.640192,
+     "liqPx": 2.2104553586,
+     "notional": 107822.366316,
      "peak": 667300.2,
      "side": "SHORT",
      "szi": -667300.2,
-     "uPnl": 28397.518643
+     "uPnl": 27983.792519
     },
     "ASTER": {
      "alerted": 111998.0,
      "entryPx": 0.710609,
      "lev": 5.0,
-     "liqPx": 12.3140029873,
-     "notional": 76294.15758,
+     "liqPx": 12.33584511,
+     "notional": 76521.177526,
      "peak": 111998.0,
      "side": "SHORT",
      "szi": -111998.0,
-     "uPnl": 3292.68027
+     "uPnl": 3065.660324
     },
     "ATOM": {
      "alerted": 14510.27,
      "entryPx": 1.9892,
      "lev": 5.0,
-     "liqPx": 91.3228982913,
-     "notional": 22270.362396,
+     "liqPx": 91.4863419728,
+     "notional": 22422.720231,
      "peak": 14510.27,
      "side": "SHORT",
      "szi": -14510.27,
-     "uPnl": 6594.143524
+     "uPnl": 6441.785689
     },
     "AXS": {
      "alerted": 21298.0,
      "entryPx": 1.22076,
      "lev": 5.0,
-     "liqPx": 62.033219379,
-     "notional": 18333.95734,
+     "liqPx": 62.144329497,
+     "notional": 18481.12652,
      "peak": 21298.0,
      "side": "SHORT",
      "szi": -21298.0,
-     "uPnl": 7665.91754
+     "uPnl": 7518.74836
     },
     "BNB": {
      "alerted": 787.429,
      "entryPx": 716.861,
      "lev": 10.0,
-     "liqPx": 2429.6899321305,
-     "notional": 548318.30986,
+     "liqPx": 2435.8124940498,
+     "notional": 550814.45979,
      "peak": 787.429,
      "side": "SHORT",
      "szi": -787.429,
-     "uPnl": 16159.20483
+     "uPnl": 13663.0549
     },
     "BTC": {
      "alerted": 17.61271,
      "entryPx": 79084.9,
      "lev": 40.0,
      "liqPx": null,
-     "notional": 1350718.7299,
+     "notional": 1354558.30068,
      "peak": 17.61271,
      "side": "LONG",
      "szi": 17.61271,
-     "uPnl": -42180.936222
+     "uPnl": -38341.365442
     },
     "DASH": {
      "alerted": 294.54,
      "entryPx": 71.1458,
      "lev": 5.0,
-     "liqPx": 4471.3493552844,
-     "notional": 14141.690112,
+     "liqPx": 4479.1291995191,
+     "notional": 14213.91132,
      "peak": 294.54,
      "side": "SHORT",
      "szi": -294.54,
-     "uPnl": 6813.615608
+     "uPnl": 6741.3944
     },
     "DOT": {
      "alerted": 17973.4,
      "entryPx": 1.24054,
      "lev": 10.0,
-     "liqPx": 76.911314051,
-     "notional": 17467.808258,
+     "liqPx": 77.0392681454,
+     "notional": 17442.645498,
      "peak": 17973.4,
      "side": "SHORT",
      "szi": -17973.4,
-     "uPnl": 4828.986622
+     "uPnl": 4854.149382
     },
     "EIGEN": {
      "alerted": 93738.28,
      "entryPx": 0.2591,
      "lev": 5.0,
-     "liqPx": 14.0870993912,
-     "notional": 17650.918124,
+     "liqPx": 14.1110743947,
+     "notional": 17679.039608,
      "peak": 93738.28,
      "side": "SHORT",
      "szi": -93738.28,
-     "uPnl": 6645.348426
+     "uPnl": 6617.226942
     },
     "FET": {
      "alerted": 126278.0,
      "entryPx": 0.239641,
      "lev": 5.0,
-     "liqPx": 10.4838081921,
-     "notional": 21024.781888,
+     "liqPx": 10.5017565448,
+     "notional": 21072.00986,
      "peak": 126278.0,
      "side": "SHORT",
      "szi": -126278.0,
-     "uPnl": 9236.644452
+     "uPnl": 9189.41648
     },
     "FIL": {
      "alerted": 9786.3,
      "entryPx": 1.2262,
      "lev": 5.0,
-     "liqPx": 133.9973017546,
-     "notional": 8488.245168,
+     "liqPx": 134.2239332732,
+     "notional": 8486.875086,
      "peak": 9786.3,
      "side": "SHORT",
      "szi": -9786.3,
-     "uPnl": 3511.715892
+     "uPnl": 3513.085974
     },
     "GALA": {
      "alerted": 3640864.0,
      "entryPx": 0.002573,
      "lev": 3.0,
-     "liqPx": 0.3390837187,
-     "notional": 6156.701024,
+     "liqPx": 0.3396784283,
+     "notional": 6229.518304,
      "peak": 3640864.0,
      "side": "SHORT",
      "szi": -3640864.0,
-     "uPnl": 3212.667256
+     "uPnl": 3139.849976
     },
     "GRASS": {
      "alerted": 61957.1,
      "entryPx": 0.60147,
      "lev": 3.0,
-     "liqPx": 20.4099981631,
-     "notional": 36143.293856,
+     "liqPx": 20.4499605571,
+     "notional": 36526.808305,
      "peak": 61957.1,
      "side": "SHORT",
      "szi": -61957.1,
-     "uPnl": 1122.061784
+     "uPnl": 738.547335
     },
     "HYPE": {
      "alerted": 96684.6,
      "entryPx": 84.0789,
      "lev": 10.0,
-     "liqPx": 73.3970742427,
-     "notional": 8604929.4,
+     "liqPx": 73.4740964562,
+     "notional": 8614945.92456,
      "peak": 96684.6,
      "side": "LONG",
      "szi": 96684.6,
-     "uPnl": 475790.568279
+     "uPnl": 485807.092839
     },
     "INIT": {
      "alerted": 476438.0,
      "entryPx": 0.140695,
      "lev": 3.0,
-     "liqPx": 2.7657589057,
-     "notional": 89311.638166,
+     "liqPx": 2.7705937459,
+     "notional": 89522.7002,
      "peak": 476438.0,
      "side": "SHORT",
      "szi": -476438.0,
-     "uPnl": -22278.812976
+     "uPnl": -22489.87501
     },
     "INJ": {
      "alerted": 26383.2,
      "entryPx": 7.85654,
      "lev": 5.0,
-     "liqPx": 56.5161864775,
-     "notional": 188228.30208,
+     "liqPx": 56.5784026618,
+     "notional": 187650.51,
      "peak": 26383.2,
      "side": "SHORT",
      "szi": -26383.2,
-     "uPnl": 19052.5154
+     "uPnl": 19630.30748
     },
     "LDO": {
      "alerted": 33372.2,
      "entryPx": 0.48115,
      "lev": 5.0,
-     "liqPx": 39.3765058696,
-     "notional": 11231.080188,
+     "liqPx": 39.4464359539,
+     "notional": 11345.546834,
      "peak": 33372.2,
      "side": "SHORT",
      "szi": -33372.2,
-     "uPnl": 4825.978158
+     "uPnl": 4711.511512
     },
     "LIT": {
      "alerted": 42920.0,
      "entryPx": 3.32518,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 115660.816,
+     "notional": 117450.58,
      "peak": 42920.0,
      "side": "LONG",
      "szi": 42920.0,
-     "uPnl": -27055.92852
+     "uPnl": -25266.16452
     },
     "LTC": {
      "alerted": 1003.27,
      "entryPx": 69.77,
      "lev": 10.0,
-     "liqPx": 1415.5773604589,
-     "notional": 55316.29472,
+     "liqPx": 1418.1787155876,
+     "notional": 55601.2234,
      "peak": 1003.27,
      "side": "SHORT",
      "szi": -1003.27,
-     "uPnl": 14681.87039
+     "uPnl": 14396.94171
     },
     "NEAR": {
      "alerted": 132616.2,
      "entryPx": 4.82827,
      "lev": 10.0,
-     "liqPx": 14.596730715,
-     "notional": 570872.95614,
+     "liqPx": 14.6170620036,
+     "notional": 571244.2815,
      "peak": 132616.2,
      "side": "SHORT",
      "szi": -132616.2,
-     "uPnl": 69434.206229
+     "uPnl": 69062.880869
     },
     "OP": {
      "alerted": 84074.8,
      "entryPx": 0.14273,
      "lev": 5.0,
-     "liqPx": 15.6117945793,
-     "notional": 9708.957904,
+     "liqPx": 15.639500766,
+     "notional": 9819.095892,
      "peak": 84074.8,
      "side": "SHORT",
      "szi": -84074.8,
-     "uPnl": 2291.0383
+     "uPnl": 2180.900312
     },
     "PYTH": {
      "alerted": 449479.0,
      "entryPx": 0.085108,
      "lev": 5.0,
-     "liqPx": 2.9624751282,
-     "notional": 28720.809142,
+     "liqPx": 2.9682815204,
+     "notional": 29111.406393,
      "peak": 449479.0,
      "side": "SHORT",
      "szi": -449479.0,
-     "uPnl": 9533.729676
+     "uPnl": 9143.132425
     },
     "RENDER": {
      "alerted": 8032.5,
      "entryPx": 2.08365,
      "lev": 5.0,
-     "liqPx": 163.7596672261,
-     "notional": 12549.978,
+     "liqPx": 164.049951585,
+     "notional": 12662.433,
      "peak": 8032.5,
      "side": "SHORT",
      "szi": -8032.5,
-     "uPnl": 4186.9553
+     "uPnl": 4074.5003
     },
     "RUNE": {
      "alerted": 23044.7,
      "entryPx": 0.76177,
      "lev": 5.0,
-     "liqPx": 57.1778665511,
-     "notional": 14797.232317,
+     "liqPx": 57.2772886992,
+     "notional": 14869.131781,
      "peak": 23044.7,
      "side": "SHORT",
      "szi": -23044.7,
-     "uPnl": 2757.641558
+     "uPnl": 2685.742094
     },
     "S": {
      "alerted": 1647029.0,
      "entryPx": 0.052383,
      "lev": 5.0,
-     "liqPx": 0.8319451209,
-     "notional": 67388.191535,
+     "liqPx": 0.8334135496,
+     "notional": 67587.482044,
      "peak": 1647029.0,
      "side": "SHORT",
      "szi": -1647029.0,
-     "uPnl": 18888.192175
+     "uPnl": 18688.901666
     },
     "SAND": {
      "alerted": 1220447.0,
      "entryPx": 0.062224,
      "lev": 5.0,
-     "liqPx": 1.1133453347,
-     "notional": 55929.424669,
+     "liqPx": 1.1159577292,
+     "notional": 56898.459587,
      "peak": 1220447.0,
      "side": "SHORT",
      "szi": -1220447.0,
-     "uPnl": 20012.623209
+     "uPnl": 19043.588291
     },
     "SEI": {
      "alerted": 1341267.0,
      "entryPx": 0.073364,
      "lev": 5.0,
-     "liqPx": 1.0195653427,
-     "notional": 64659.799536,
+     "liqPx": 1.021992938,
+     "notional": 65696.598927,
      "peak": 1341267.0,
      "side": "SHORT",
      "szi": -1341267.0,
-     "uPnl": 33741.239711
+     "uPnl": 32704.44032
     },
     "STRK": {
      "alerted": 1447286.1,
      "entryPx": 0.06108,
      "lev": 5.0,
-     "liqPx": 0.9442717977,
-     "notional": 63781.898427,
+     "liqPx": 0.9459151877,
+     "notional": 63941.099898,
      "peak": 1447286.1,
      "side": "SHORT",
      "szi": -1447286.1,
-     "uPnl": 24623.699466
+     "uPnl": 24464.497995
     },
     "SUI": {
      "alerted": 181076.6,
      "entryPx": 1.14028,
      "lev": 10.0,
-     "liqPx": 8.4314587877,
-     "notional": 161849.886612,
+     "liqPx": 8.450158287,
+     "notional": 162910.995488,
      "peak": 181076.6,
      "side": "SHORT",
      "szi": -181076.6,
-     "uPnl": 44629.594507
+     "uPnl": 43568.485631
     },
     "SUPER": {
      "alerted": 100987.0,
      "entryPx": 0.142937,
      "lev": 3.0,
      "liqPx": null,
-     "notional": 16320.50907,
+     "notional": 16331.61764,
      "peak": 100987.0,
      "side": "LONG",
      "szi": 100987.0,
-     "uPnl": 1885.67874
+     "uPnl": 1896.78731
     },
     "TIA": {
      "alerted": 101716.4,
      "entryPx": 0.47189,
      "lev": 5.0,
-     "liqPx": 13.2704978581,
-     "notional": 46977.71934,
+     "liqPx": 13.3035159141,
+     "notional": 48116.94302,
      "peak": 101716.4,
      "side": "SHORT",
      "szi": -101716.4,
-     "uPnl": 1022.248074
+     "uPnl": -116.975606
     },
     "TRX": {
      "alerted": 1098557.0,
      "entryPx": 0.341604,
      "lev": 10.0,
-     "liqPx": 1.5733889483,
-     "notional": 363567.43915,
+     "liqPx": 1.5734952999,
+     "notional": 361359.33958,
      "peak": 1098557.0,
      "side": "SHORT",
      "szi": -1098557.0,
-     "uPnl": 11704.84214
+     "uPnl": 13912.94171
     },
     "W": {
      "alerted": 2925751.9,
      "entryPx": 0.01682,
      "lev": 5.0,
-     "liqPx": 0.4568541794,
-     "notional": 33792.434445,
+     "liqPx": 0.4576927038,
+     "notional": 34026.494597,
      "peak": 2925751.9,
      "side": "SHORT",
      "szi": -2925751.9,
-     "uPnl": 15436.6962
+     "uPnl": 15202.636048
     },
     "WLD": {
      "alerted": 52349.5,
      "entryPx": 0.55898,
      "lev": 10.0,
-     "liqPx": 26.4763464189,
-     "notional": 21133.49315,
+     "liqPx": 26.5233781684,
+     "notional": 21270.64884,
      "peak": 52349.5,
      "side": "SHORT",
      "szi": -52349.5,
-     "uPnl": 8128.969672
+     "uPnl": 7991.813982
     },
     "XAI": {
      "alerted": 2217294.9,
      "entryPx": 0.00902,
      "lev": 3.0,
-     "liqPx": 0.5611288526,
-     "notional": 15787.139688,
+     "liqPx": 0.5621225428,
+     "notional": 15898.004433,
      "peak": 2217294.9,
      "side": "SHORT",
      "szi": -2217294.9,
-     "uPnl": 4212.86031
+     "uPnl": 4101.995565
     },
     "XLM": {
      "alerted": 67777.0,
      "entryPx": 0.2295,
      "lev": 5.0,
-     "liqPx": 19.3906109821,
-     "notional": 11387.89154,
+     "liqPx": 19.4242144513,
+     "notional": 11446.17976,
      "peak": 67777.0,
      "side": "SHORT",
      "szi": -67777.0,
-     "uPnl": 4166.92996
+     "uPnl": 4108.64174
     },
     "XMR": {
      "alerted": 87.744,
      "entryPx": 614.766,
      "lev": 5.0,
      "liqPx": null,
-     "notional": 52097.56128,
+     "notional": 51740.88192,
      "peak": 87.744,
      "side": "LONG",
      "szi": 87.744,
-     "uPnl": -1844.4726
+     "uPnl": -2201.15196
     },
     "XPL": {
      "alerted": 18913021.0,
      "entryPx": 0.10246,
      "lev": 10.0,
-     "liqPx": 0.0009588233,
-     "notional": 1526696.881162,
+     "liqPx": 0.0009239559,
+     "notional": 1528607.096283,
      "peak": 18913021.0,
      "side": "LONG",
      "szi": 18913021.0,
-     "uPnl": -411135.792485
+     "uPnl": -409225.577364
     },
     "XRP": {
      "alerted": 37804.0,
      "entryPx": 1.322755,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 47277.6824,
+     "notional": 47345.7296,
      "peak": 37804.0,
      "side": "LONG",
      "szi": 37804.0,
-     "uPnl": -2727.7752
+     "uPnl": -2659.728
     },
     "ZEC": {
      "alerted": 391.1,
      "entryPx": 1355.7399,
      "lev": 10.0,
-     "liqPx": 4724.7747218298,
-     "notional": 482969.39,
+     "liqPx": 4737.3193213695,
+     "notional": 485550.65,
      "peak": 391.1,
      "side": "SHORT",
      "szi": -391.1,
-     "uPnl": 47260.49166
+     "uPnl": 44679.23166
     },
     "ZK": {
      "alerted": 1963987.0,
      "entryPx": 0.014237,
      "lev": 5.0,
-     "liqPx": 0.6736927418,
-     "notional": 20274.237801,
+     "liqPx": 0.6749737157,
+     "notional": 20570.799838,
      "peak": 1963987.0,
      "side": "SHORT",
      "szi": -1963987.0,
-     "uPnl": 7687.72422
+     "uPnl": 7391.162183
     },
     "ZRO": {
      "alerted": 16909.6,
      "entryPx": 1.75146,
      "lev": 5.0,
-     "liqPx": 78.7473224224,
-     "notional": 28736.17424,
+     "liqPx": 78.884664682,
+     "notional": 28839.3228,
      "peak": 16909.6,
      "side": "SHORT",
      "szi": -16909.6,
-     "uPnl": 880.43671
+     "uPnl": 777.28815
     },
     "kPEPE": {
      "alerted": 53812944.0,
      "entryPx": 0.004733,
      "lev": 10.0,
-     "liqPx": 0.0302856003,
-     "notional": 264867.310368,
+     "liqPx": 0.0303848043,
+     "notional": 267880.835232,
      "peak": 53812944.0,
      "side": "SHORT",
      "szi": -53812944.0,
-     "uPnl": -10131.53561
+     "uPnl": -13145.060474
     },
     "xyz:AAPL": {
      "alerted": 865.501,
      "entryPx": 346.62,
      "lev": 20.0,
-     "liqPx": 1960.1574100843,
-     "notional": 298338.1947,
+     "liqPx": 1963.0291556812,
+     "notional": 298442.05482,
      "peak": 865.501,
      "side": "SHORT",
      "szi": -865.501,
-     "uPnl": 1661.76192
+     "uPnl": 1557.9018
     },
     "xyz:AMZN": {
      "alerted": 135.22,
      "entryPx": 226.849,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 32446.039,
+     "notional": 32477.1396,
      "peak": 135.22,
      "side": "LONG",
      "szi": 135.22,
-     "uPnl": 1771.47933
+     "uPnl": 1802.57993
     },
     "xyz:ANT": {
      "alerted": 353.2,
      "entryPx": 112.9964,
      "lev": 10.0,
-     "liqPx": 3975.9944841261,
-     "notional": 39431.248,
+     "liqPx": 3982.626966815,
+     "notional": 39448.908,
      "peak": 353.2,
      "side": "SHORT",
      "szi": -353.2,
-     "uPnl": 479.0962
+     "uPnl": 461.4362
     },
     "xyz:GOLD": {
      "alerted": 686.485,
      "entryPx": 4290.34,
      "lev": 25.0,
-     "liqPx": 1753.2536771795,
-     "notional": 2665964.4975,
+     "liqPx": 1754.5250479736,
+     "notional": 2669328.274,
      "peak": 686.485,
      "side": "LONG",
      "szi": 686.485,
-     "uPnl": -279294.20582
+     "uPnl": -275930.42932
     },
     "xyz:GOOGL": {
      "alerted": 1975.14,
      "entryPx": 313.644,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 555429.1194,
+     "notional": 555448.8708,
      "peak": 1975.14,
      "side": "LONG",
      "szi": 1975.14,
-     "uPnl": -64061.85786
+     "uPnl": -64042.10646
     },
     "xyz:INTC": {
      "alerted": 1028.23,
      "entryPx": 69.7856,
      "lev": 6.0,
-     "liqPx": 51.0199995874,
-     "notional": 66711.5624,
+     "liqPx": 51.022111725,
+     "notional": 66690.9978,
      "peak": 1028.23,
      "side": "LONG",
      "szi": 1028.23,
-     "uPnl": -5044.08533
+     "uPnl": -5064.64993
     },
     "xyz:MU": {
      "alerted": 64.905,
      "entryPx": 1027.922,
      "lev": 10.0,
-     "liqPx": 21914.4625050972,
-     "notional": 57468.1851,
+     "liqPx": 21952.0030564525,
+     "notional": 57579.8217,
      "peak": 64.905,
      "side": "SHORT",
      "szi": -64.905,
-     "uPnl": 9249.1543
+     "uPnl": 9137.5177
     },
     "xyz:PURRDAT": {
      "alerted": 4587.0,
      "entryPx": 10.9,
      "lev": 6.0,
-     "liqPx": 9.5630483095,
-     "notional": 49961.604,
+     "liqPx": 9.5631199541,
+     "notional": 50250.585,
      "peak": 4587.0,
      "side": "LONG",
      "szi": 4587.0,
-     "uPnl": -36.696
+     "uPnl": 252.285
     },
     "xyz:RDDT": {
      "alerted": 213.35,
      "entryPx": 93.741,
      "lev": 10.0,
-     "liqPx": 88.7886622575,
-     "notional": 19606.4383,
+     "liqPx": 88.7951568685,
+     "notional": 19764.3173,
      "peak": 213.35,
      "side": "LONG",
      "szi": 213.35,
-     "uPnl": -393.20405
+     "uPnl": -235.32505
     },
     "xyz:SNDK": {
-     "alerted": 34.415,
-     "entryPx": 1139.802,
+     "alerted": 42.486,
+     "entryPx": 1141.838,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 39553.1595,
-     "peak": 34.415,
+     "notional": 48918.3804,
+     "peak": 42.486,
      "side": "LONG",
-     "szi": 34.415,
-     "uPnl": 326.8646
+     "szi": 42.486,
+     "uPnl": 406.2254
     },
     "xyz:TSLA": {
      "alerted": 125.451,
      "entryPx": 398.56,
      "lev": 20.0,
-     "liqPx": 11544.3880482886,
-     "notional": 50075.02116,
+     "liqPx": 11563.7526603313,
+     "notional": 50122.69254,
      "peak": 125.451,
      "side": "SHORT",
      "szi": -125.451,
-     "uPnl": -75.2706
+     "uPnl": -122.94198
     }
    },
    "summary": {
-    "accountValue": 1895864.52432,
-    "totalNtlPos": 19332804.475178
+    "accountValue": 1903583.321942,
+    "totalNtlPos": 19378969.731477
    },
-   "ts": 1793397471108,
+   "ts": 1793401086295,
    "v": 4
   },
   "0x541e077ac38c56d7bf590924d249c60b0c80071d": {
@@ -676,85 +676,85 @@
      "alerted": 50000.0,
      "entryPx": 0.69281,
      "lev": 3.0,
-     "liqPx": 16.4255263083,
-     "notional": 30898.5,
+     "liqPx": 15.9200687452,
+     "notional": 31009.0,
      "peak": 50000.0,
      "side": "SHORT",
      "szi": -50000.0,
-     "uPnl": 3742.02006
+     "uPnl": 3631.52006
     },
     "BTC": {
      "alerted": 92.0,
      "entryPx": 83657.4,
      "lev": 40.0,
-     "liqPx": 86589.1674859903,
-     "notional": 7055480.0,
+     "liqPx": 86489.250779796,
+     "notional": 7075536.0,
      "peak": 92.0,
      "side": "SHORT",
      "szi": -92.0,
-     "uPnl": 641004.129076
+     "uPnl": 620948.129076
     },
     "PURR": {
      "alerted": 2830347.0,
      "entryPx": 0.129768,
      "lev": 3.0,
-     "liqPx": 0.4045061381,
-     "notional": 347364.8685,
+     "liqPx": 0.3977014857,
+     "notional": 353608.99812,
      "peak": 2830347.0,
      "side": "SHORT",
      "szi": -2812671.0,
-     "uPnl": 17632.181243
+     "uPnl": 11388.051623
     },
     "xyz:GOOGL": {
      "alerted": 6850.0,
      "entryPx": 300.64,
      "lev": 20.0,
-     "liqPx": 412.5409526559,
-     "notional": 1926288.5,
+     "liqPx": 408.3301336735,
+     "notional": 1926014.5,
      "peak": 6850.0,
      "side": "SHORT",
      "szi": -6850.0,
-     "uPnl": 133102.019819
+     "uPnl": 133376.019819
     },
     "xyz:META": {
      "alerted": 598.0,
      "entryPx": 688.204,
      "lev": 20.0,
-     "liqPx": 2116.836297145,
-     "notional": 366251.08,
+     "liqPx": 2070.7301934171,
+     "notional": 367249.74,
      "peak": 598.0,
      "side": "SHORT",
      "szi": -598.0,
-     "uPnl": 45295.067677
+     "uPnl": 44296.407677
     },
     "xyz:SNDK": {
      "alerted": 75.0,
      "entryPx": 1300.208,
      "lev": 10.0,
-     "liqPx": 12858.6009693333,
-     "notional": 86197.5,
+     "liqPx": 12488.8360451429,
+     "notional": 86355.0,
      "peak": 75.0,
      "side": "SHORT",
      "szi": -75.0,
-     "uPnl": 11318.144758
+     "uPnl": 11160.644758
     },
     "xyz:SPCX": {
      "alerted": 900.0,
      "entryPx": 151.0308,
      "lev": 20.0,
-     "liqPx": 1135.1644729919,
-     "notional": 122031.0,
+     "liqPx": 1104.2799062927,
+     "notional": 122805.0,
      "peak": 900.0,
      "side": "SHORT",
      "szi": -900.0,
-     "uPnl": 13896.787434
+     "uPnl": 13122.787434
     }
    },
    "summary": {
-    "accountValue": 1005648.0045759999,
-    "totalNtlPos": 9934511.4485
+    "accountValue": 977718.2465369999,
+    "totalNtlPos": 9962578.23812
    },
-   "ts": 1793397471108,
+   "ts": 1793401086295,
    "v": 4
   }
  }
