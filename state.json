@@ -6,40 +6,28 @@
      "alerted": 1800.181,
      "entryPx": 1173.491,
      "lev": 10.0,
-     "liqPx": 850.2710027574,
-     "notional": 2025563.6612,
+     "liqPx": 850.307987008,
+     "notional": 1964537.5253,
      "peak": 1800.181,
      "side": "LONG",
      "szi": 1800.181,
-     "uPnl": -86933.561102
+     "uPnl": -147959.697002
     }
    },
    "summary": {
-    "accountValue": 303844.02023,
-    "totalNtlPos": 2025563.6612
+    "accountValue": 242754.634902,
+    "totalNtlPos": 1964537.5253
    },
-   "ts": 1793793329773,
+   "ts": 1793796946860,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
-   "positions": {
-    "ETH": {
-     "alerted": 272.0,
-     "entryPx": 2285.0,
-     "lev": 3.0,
-     "liqPx": 1290.376728639,
-     "notional": 634355.68,
-     "peak": 272.0,
-     "side": "LONG",
-     "szi": 272.0,
-     "uPnl": 12835.68
-    }
-   },
+   "positions": {},
    "summary": {
-    "accountValue": 220125.058325,
-    "totalNtlPos": 634355.68
+    "accountValue": 0.0,
+    "totalNtlPos": 0.0
    },
-   "ts": 1793793329773,
+   "ts": 1793796946860,
    "v": 4
   }
  }
