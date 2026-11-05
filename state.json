@@ -6,51 +6,51 @@
      "alerted": 30.0,
      "entryPx": 80320.3,
      "lev": 20.0,
-     "liqPx": 87967.036002963,
-     "notional": 2416830.0,
+     "liqPx": 87434.3390022387,
+     "notional": 2416200.0,
      "peak": 30.0,
      "side": "SHORT",
      "szi": -30.0,
-     "uPnl": -7220.0
+     "uPnl": -6590.0
     },
     "xyz:SNDK": {
      "alerted": 2000.181,
      "entryPx": 1158.941,
      "lev": 10.0,
-     "liqPx": 893.7115859462,
-     "notional": 2024383.1901,
+     "liqPx": 893.3912648416,
+     "notional": 2007381.6516,
      "peak": 2000.181,
      "side": "LONG",
      "szi": 2000.181,
-     "uPnl": -293708.629402
+     "uPnl": -310710.167902
     }
    },
    "summary": {
-    "accountValue": 350734.368456,
-    "totalNtlPos": 4441213.1901
+    "accountValue": 334333.62013399997,
+    "totalNtlPos": 4423581.6515999995
    },
-   "ts": 1793850687961,
+   "ts": 1793854312478,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
    "positions": {
-    "xyz:NVDA": {
-     "alerted": 7200.0,
-     "entryPx": 202.592,
-     "lev": 6.0,
-     "liqPx": 275.6207411232,
-     "notional": 1432512.0,
-     "peak": 7200.0,
-     "side": "SHORT",
-     "szi": -7200.0,
-     "uPnl": 26152.48769
+    "ETH": {
+     "alerted": 400.0,
+     "entryPx": 2422.56,
+     "lev": 2.0,
+     "liqPx": 939.3132543189,
+     "notional": 970520.0,
+     "peak": 400.0,
+     "side": "LONG",
+     "szi": 400.0,
+     "uPnl": 1494.12289
     }
    },
    "summary": {
-    "accountValue": 265621.547334,
-    "totalNtlPos": 1432512.0
+    "accountValue": 484780.0,
+    "totalNtlPos": 970520.0
    },
-   "ts": 1793850687961,
+   "ts": 1793854312478,
    "v": 4
   }
  }
