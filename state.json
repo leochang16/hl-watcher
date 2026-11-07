@@ -3,33 +3,33 @@
   "0x0f859756ab0f1655ca61b32d21f6cf9ec2b998dc": {
    "positions": {
     "BTC": {
-     "alerted": 40.92154,
+     "alerted": 30.0,
      "entryPx": 76222.7,
      "lev": 20.0,
-     "liqPx": 58737.1581641013,
-     "notional": 3030524.0,
+     "liqPx": 52477.5296068186,
+     "notional": 2275110.0,
      "peak": 45.0,
      "side": "LONG",
-     "szi": 40.0,
-     "uPnl": -18387.11105
+     "szi": 30.0,
+     "uPnl": -11573.333272
     },
     "xyz:SNDK": {
      "alerted": 2200.181,
      "entryPx": 1129.612,
      "lev": 10.0,
-     "liqPx": 507.7543174029,
-     "notional": 1825072.14131,
+     "liqPx": 502.2051290173,
+     "notional": 1833388.82549,
      "peak": 2200.181,
      "side": "LONG",
      "szi": 2200.181,
-     "uPnl": -660279.678192
+     "uPnl": -651962.994012
     }
    },
    "summary": {
-    "accountValue": 474590.013885,
-    "totalNtlPos": 4855596.14131
+    "accountValue": 418479.910178,
+    "totalNtlPos": 4108498.8254899997
    },
-   "ts": 1794091380402,
+   "ts": 1794094996346,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
@@ -38,7 +38,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1794091380402,
+   "ts": 1794094996346,
    "v": 4
   }
  }
