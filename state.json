@@ -3,33 +3,33 @@
   "0x0f859756ab0f1655ca61b32d21f6cf9ec2b998dc": {
    "positions": {
     "HYPE": {
-     "alerted": 15000.0,
-     "entryPx": 74.0387,
+     "alerted": 16000.0,
+     "entryPx": 74.0312,
      "lev": 8.0,
-     "liqPx": 30.0709717742,
-     "notional": 1092325.5,
-     "peak": 15000.0,
+     "liqPx": 30.3994756303,
+     "notional": 1154966.4,
+     "peak": 16000.0,
      "side": "LONG",
-     "szi": 15000.0,
-     "uPnl": -18255.93022
+     "szi": 16000.0,
+     "uPnl": -29533.03022
     },
     "xyz:SNDK": {
      "alerted": 2200.181,
      "entryPx": 1129.612,
      "lev": 10.0,
-     "liqPx": 557.221741163,
-     "notional": 1867249.61108,
+     "liqPx": 564.1373686505,
+     "notional": 1909779.10981,
      "peak": 2200.181,
      "side": "LONG",
      "szi": 2200.181,
-     "uPnl": -618102.208422
+     "uPnl": -575572.709692
     }
    },
    "summary": {
-    "accountValue": 259847.79908199998,
-    "totalNtlPos": 2959575.11108
+    "accountValue": 233211.709011,
+    "totalNtlPos": 3064745.5098099997
    },
-   "ts": 1794321547990,
+   "ts": 1794325169210,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
@@ -38,7 +38,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1794321547990,
+   "ts": 1794325169210,
    "v": 4
   }
  }
