@@ -22,7 +22,7 @@ LINE_USER_ID = os.environ.get("LINE_USER_ID", "").strip()
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
 MIN_NOTIONAL = float(os.environ.get("MIN_NOTIONAL", "5000"))  # 低於此名目完全不追蹤
-ALERT_MIN = float(os.environ.get("ALERT_MIN", "250000"))  # 低於此名目不通知、不列彙總，但仍追蹤
+ALERT_MIN = float(os.environ.get("ALERT_MIN", "100000"))  # 低於此名目不通知、不列彙總，但仍追蹤
                                                           # （兩段式：追蹤門檻低、通知門檻高，部位在門檻附近來回才不會誤報平倉）
 SUMMARY = os.environ.get("SUMMARY", "").lower() in ("1", "true", "yes")
 REDUCE_PCT = float(os.environ.get("REDUCE_PCT", "5"))  # 自上次警示水位再減這個%就通知
