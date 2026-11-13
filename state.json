@@ -6,63 +6,63 @@
      "alerted": 620.462,
      "entryPx": 257.967,
      "lev": 20.0,
-     "liqPx": 8.7226074631,
-     "notional": 167884.60796,
+     "liqPx": 10.3206660645,
+     "notional": 167524.74,
      "peak": 620.462,
      "side": "LONG",
      "szi": 620.462,
-     "uPnl": 7825.76613
+     "uPnl": 7465.89817
     },
     "xyz:AVGO": {
      "alerted": 626.78,
      "entryPx": 296.0765,
      "lev": 10.0,
-     "liqPx": 280.635807902,
-     "notional": 223497.2124,
+     "liqPx": 280.6381538221,
+     "notional": 223541.087,
      "peak": 626.78,
      "side": "LONG",
      "szi": 626.78,
-     "uPnl": 37922.3743
+     "uPnl": 37966.2489
     },
     "xyz:GOLD": {
      "alerted": 40.8262,
      "entryPx": 4029.5,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 158956.8097,
+     "notional": 158748.59608,
      "peak": 40.8262,
      "side": "LONG",
      "szi": 40.8262,
-     "uPnl": -5552.446936
+     "uPnl": -5760.660556
     },
     "xyz:META": {
      "alerted": 767.987,
      "entryPx": 618.569,
      "lev": 10.0,
-     "liqPx": 558.1682134724,
-     "notional": 479216.20813,
+     "liqPx": 558.1768760829,
+     "notional": 480291.38993,
      "peak": 767.987,
      "side": "LONG",
      "szi": 767.987,
-     "uPnl": 4162.71935
+     "uPnl": 5237.90115
     },
     "xyz:SKHX": {
      "alerted": 370.323,
      "entryPx": 922.139,
      "lev": 10.0,
-     "liqPx": 467.8423904225,
-     "notional": 340000.95276,
+     "liqPx": 469.2776771658,
+     "notional": 339145.50663,
      "peak": 370.323,
      "side": "LONG",
      "szi": 370.323,
-     "uPnl": -1488.410935
+     "uPnl": -2343.857065
     }
    },
    "summary": {
-    "accountValue": 168320.660271,
-    "totalNtlPos": 1369555.79095
+    "accountValue": 168058.282551,
+    "totalNtlPos": 1369251.31964
    },
-   "ts": 1794573189908,
+   "ts": 1794575600494,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
@@ -71,7 +71,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1794573189908,
+   "ts": 1794575600494,
    "v": 4
   }
  }
