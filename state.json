@@ -7,62 +7,73 @@
      "entryPx": 257.967,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 164602.36398,
+     "notional": 164577.5455,
      "peak": 620.462,
      "side": "LONG",
      "szi": 620.462,
-     "uPnl": 4543.52215
+     "uPnl": 4518.70367
+    },
+    "xyz:AVGO": {
+     "alerted": 293.61,
+     "entryPx": 340.608,
+     "lev": 10.0,
+     "liqPx": 322.6495901509,
+     "notional": 101348.2998,
+     "peak": 293.61,
+     "side": "LONG",
+     "szi": 293.61,
+     "uPnl": 1342.3665
     },
     "xyz:GOLD": {
      "alerted": 40.8262,
      "entryPx": 4029.5,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 158336.25146,
+     "notional": 158666.94368,
      "peak": 40.8262,
      "side": "LONG",
      "szi": 40.8262,
-     "uPnl": -6173.005176
+     "uPnl": -5842.312956
     },
     "xyz:META": {
      "alerted": 767.987,
      "entryPx": 618.569,
      "lev": 10.0,
-     "liqPx": 558.1900575654,
-     "notional": 484707.31518,
+     "liqPx": 558.1941080132,
+     "notional": 485866.97555,
      "peak": 767.987,
      "side": "LONG",
      "szi": 767.987,
-     "uPnl": 9653.8264
+     "uPnl": 10813.48677
     },
     "xyz:NVDA": {
      "alerted": 940.339,
      "entryPx": 159.512,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 149607.9349,
+     "notional": 150990.23323,
      "peak": 940.339,
      "side": "LONG",
      "szi": 940.339,
-     "uPnl": -387.89829
+     "uPnl": 994.40004
     },
     "xyz:SKHX": {
      "alerted": 370.323,
      "entryPx": 922.139,
      "lev": 10.0,
-     "liqPx": 341.6950786717,
-     "notional": 326047.18212,
+     "liqPx": 365.3983242737,
+     "notional": 327861.76482,
      "peak": 370.323,
      "side": "LONG",
      "szi": 370.323,
-     "uPnl": -15442.181575
+     "uPnl": -13627.598875
     }
    },
    "summary": {
-    "accountValue": 123311.968223,
-    "totalNtlPos": 1283301.04764
+    "accountValue": 135515.97567,
+    "totalNtlPos": 1389311.76258
    },
-   "ts": 1794586478420,
+   "ts": 1794590093624,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
@@ -71,7 +82,7 @@
     "accountValue": 0.0,
     "totalNtlPos": 0.0
    },
-   "ts": 1794586478420,
+   "ts": 1794590093624,
    "v": 4
   }
  }
