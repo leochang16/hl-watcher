@@ -6,74 +6,63 @@
      "alerted": 620.462,
      "entryPx": 257.967,
      "lev": 20.0,
-     "liqPx": 40.2436644654,
-     "notional": 165297.28142,
+     "liqPx": 38.0725472805,
+     "notional": 164478.27158,
      "peak": 620.462,
      "side": "LONG",
      "szi": 620.462,
-     "uPnl": 5238.43959
-    },
-    "xyz:ANT": {
-     "alerted": 538.97,
-     "entryPx": 102.0722,
-     "lev": 10.0,
-     "liqPx": null,
-     "notional": 54479.0876,
-     "peak": 538.97,
-     "side": "LONG",
-     "szi": 538.97,
-     "uPnl": -534.7851
+     "uPnl": 4419.42975
     },
     "xyz:BABA": {
      "alerted": 3197.144,
      "entryPx": 94.032,
      "lev": 10.0,
-     "liqPx": 86.7873755257,
-     "notional": 296889.988984,
+     "liqPx": 86.7893415274,
+     "notional": 295627.117104,
      "peak": 3197.144,
      "side": "LONG",
      "szi": 3197.144,
-     "uPnl": -3746.836821
+     "uPnl": -5009.708701
     },
     "xyz:GOLD": {
      "alerted": 40.8262,
      "entryPx": 4029.5,
      "lev": 20.0,
-     "liqPx": 457.2415539681,
-     "notional": 158279.09478,
+     "liqPx": 438.8725738744,
+     "notional": 158054.55068,
      "peak": 40.8262,
      "side": "LONG",
      "szi": 40.8262,
-     "uPnl": -6230.161856
+     "uPnl": -6454.705956
     },
     "xyz:META": {
      "alerted": 767.987,
      "entryPx": 618.569,
      "lev": 10.0,
-     "liqPx": 558.4603128251,
-     "notional": 490213.78197,
+     "liqPx": 558.4644017352,
+     "notional": 489246.11835,
      "peak": 767.987,
      "side": "LONG",
      "szi": 767.987,
-     "uPnl": 15160.29319
+     "uPnl": 14192.62957
     },
     "xyz:NVDA": {
      "alerted": 773.227,
      "entryPx": 161.686,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 122556.4795,
+     "notional": 122378.63729,
      "peak": 773.227,
      "side": "LONG",
      "szi": 773.227,
-     "uPnl": -2463.72085
+     "uPnl": -2641.56306
     }
    },
    "summary": {
-    "accountValue": 141677.010626,
-    "totalNtlPos": 1287715.714254
+    "accountValue": 132858.935407,
+    "totalNtlPos": 1229784.695004
    },
-   "ts": 1794830151025,
+   "ts": 1794833772917,
    "v": 4
   },
   "0x75afaece8cf2a7974b1e541648923afd9339b3f8": {
@@ -83,18 +72,18 @@
      "entryPx": 101.31,
      "lev": 6.0,
      "liqPx": null,
-     "notional": 181944.0,
+     "notional": 178392.6,
      "peak": 1800.0,
      "side": "LONG",
      "szi": 1800.0,
-     "uPnl": -414.0804
+     "uPnl": -3965.4804
     }
    },
    "summary": {
-    "accountValue": 29798.930484,
-    "totalNtlPos": 181944.0
+    "accountValue": 29328.6,
+    "totalNtlPos": 178392.6
    },
-   "ts": 1794830151025,
+   "ts": 1794833772917,
    "v": 4
   }
  }
