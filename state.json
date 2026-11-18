@@ -6,52 +6,52 @@
      "alerted": 15.0,
      "entryPx": 74394.4,
      "lev": 5.0,
-     "liqPx": 118210.6702751605,
-     "notional": 942375.0,
+     "liqPx": 118252.0032646584,
+     "notional": 941235.0,
      "peak": 15.0,
      "side": "SHORT",
      "szi": -15.0,
-     "uPnl": 173541.87917
+     "uPnl": 174681.87917
     },
     "ETH": {
      "alerted": 300.0,
      "entryPx": 1750.9,
      "lev": 5.0,
-     "liqPx": 2059.2198496275,
-     "notional": 528480.0,
+     "liqPx": 2059.2368932124,
+     "notional": 527226.0,
      "peak": 300.0,
      "side": "SHORT",
      "szi": -300.0,
-     "uPnl": -3210.0
+     "uPnl": -1956.0
     },
     "xyz:MSFT": {
      "alerted": 1300.0,
      "entryPx": 526.811,
      "lev": 20.0,
-     "liqPx": 1138.5419454439,
-     "notional": 659451.0,
+     "liqPx": 1140.3592773599,
+     "notional": 660075.0,
      "peak": 1300.0,
      "side": "SHORT",
      "szi": -1300.0,
-     "uPnl": 25403.6256
+     "uPnl": 24779.6256
     },
     "xyz:MU": {
      "alerted": 1000.0,
      "entryPx": 765.272,
      "lev": 10.0,
-     "liqPx": 1502.6741593371,
-     "notional": 701560.0,
+     "liqPx": 1503.161297221,
+     "notional": 700350.0,
      "peak": 1000.0,
      "side": "SHORT",
      "szi": -1000.0,
-     "uPnl": 63712.00815
+     "uPnl": 64922.00815
     }
    },
    "summary": {
-    "accountValue": 699889.79129,
-    "totalNtlPos": 2831866.0
+    "accountValue": 702871.8514050001,
+    "totalNtlPos": 2828886.0
    },
-   "ts": 1795030025855,
+   "ts": 1795032433496,
    "v": 4
   }
  }
