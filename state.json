@@ -6,41 +6,41 @@
      "alerted": 15.0,
      "entryPx": 74394.4,
      "lev": 5.0,
-     "liqPx": 124758.2460856626,
-     "notional": 970305.0,
+     "liqPx": 124145.1292015802,
+     "notional": 969600.0,
      "peak": 15.0,
      "side": "SHORT",
      "szi": -15.0,
-     "uPnl": 145611.87917
+     "uPnl": 146316.87917
     },
     "xyz:MSFT": {
      "alerted": 1300.0,
      "entryPx": 526.811,
      "lev": 20.0,
-     "liqPx": 1192.3169605448,
-     "notional": 659932.0,
+     "liqPx": 1185.5045026259,
+     "notional": 659464.0,
      "peak": 1300.0,
      "side": "SHORT",
      "szi": -1300.0,
-     "uPnl": 24922.6256
+     "uPnl": 25390.6256
     },
     "xyz:MU": {
      "alerted": 1000.0,
      "entryPx": 765.272,
      "lev": 10.0,
-     "liqPx": 1599.5376665962,
-     "notional": 730650.0,
+     "liqPx": 1593.6891902371,
+     "notional": 732990.0,
      "peak": 1000.0,
      "side": "SHORT",
      "szi": -1000.0,
-     "uPnl": 34622.00815
+     "uPnl": 32282.00815
     }
    },
    "summary": {
-    "accountValue": 661188.875,
-    "totalNtlPos": 2360887.0
+    "accountValue": 508237.375,
+    "totalNtlPos": 2362054.0
    },
-   "ts": 1794980716180,
+   "ts": 1794984344438,
    "v": 4
   },
   "0x55511e688074c90250e3bc470593e31b529d752a": {
@@ -49,74 +49,74 @@
      "alerted": 718.045,
      "entryPx": 257.726,
      "lev": 20.0,
-     "liqPx": 94.0885479937,
-     "notional": 185700.7979,
+     "liqPx": 93.8660695753,
+     "notional": 186031.0986,
      "peak": 718.045,
      "side": "LONG",
      "szi": 718.045,
-     "uPnl": 641.50968
+     "uPnl": 971.81038
     },
     "xyz:ANT": {
      "alerted": 2694.31,
      "entryPx": 97.613,
      "lev": 10.0,
-     "liqPx": 51.5287694535,
-     "notional": 260084.43861,
+     "liqPx": 51.5470996664,
+     "notional": 260636.77216,
      "peak": 2694.31,
      "side": "LONG",
      "szi": 2694.31,
-     "uPnl": -2915.26124
+     "uPnl": -2362.92769
     },
     "xyz:BABA": {
      "alerted": 3197.144,
      "entryPx": 94.032,
      "lev": 10.0,
-     "liqPx": 84.1978131235,
-     "notional": 276690.433192,
+     "liqPx": 84.1983826957,
+     "notional": 276345.14164,
      "peak": 3197.144,
      "side": "LONG",
      "szi": 3197.144,
-     "uPnl": -23946.392613
+     "uPnl": -24291.684165
     },
     "xyz:META": {
      "alerted": 562.7,
      "entryPx": 621.396,
      "lev": 10.0,
-     "liqPx": 566.4999598985,
-     "notional": 348536.38,
+     "liqPx": 566.5039277185,
+     "notional": 348480.11,
      "peak": 562.7,
      "side": "LONG",
      "szi": 562.7,
-     "uPnl": -1123.192889
+     "uPnl": -1179.462889
     },
     "xyz:NVDA": {
      "alerted": 696.652,
      "entryPx": 161.472,
      "lev": 10.0,
      "liqPx": null,
-     "notional": 109945.61864,
+     "notional": 110342.71028,
      "peak": 1394.054,
      "side": "LONG",
      "szi": 696.652,
-     "uPnl": -2544.569948
+     "uPnl": -2147.478308
     },
     "xyz:SKHX": {
      "alerted": 357.519,
      "entryPx": 826.379,
      "lev": 10.0,
-     "liqPx": 523.1172976983,
-     "notional": 308274.33294,
+     "liqPx": 519.5405297414,
+     "notional": 307498.51671,
      "peak": 357.519,
      "side": "LONG",
      "szi": 357.519,
-     "uPnl": 12828.03497
+     "uPnl": 12052.21874
     }
    },
    "summary": {
-    "accountValue": 139662.410512,
-    "totalNtlPos": 1489232.001282
+    "accountValue": 139751.679057,
+    "totalNtlPos": 1489334.34939
    },
-   "ts": 1794980716180,
+   "ts": 1794984344438,
    "v": 4
   },
   "0xdebbea84972174f44778a00521b1b5faa663abbb": {
@@ -125,19 +125,19 @@
      "alerted": 12684.4,
      "entryPx": 41.30055,
      "lev": 20.0,
-     "liqPx": 30.4545664527,
-     "notional": 508175.1172,
+     "liqPx": 30.4554286958,
+     "notional": 509265.9756,
      "peak": 14413.4,
      "side": "LONG",
      "szi": 12684.4,
-     "uPnl": -15697.651352
+     "uPnl": -14606.792952
     }
    },
    "summary": {
-    "accountValue": 131534.662055,
-    "totalNtlPos": 508175.1172
+    "accountValue": 132614.856845,
+    "totalNtlPos": 509265.9756
    },
-   "ts": 1794980716180,
+   "ts": 1794984344438,
    "v": 4
   }
  }
