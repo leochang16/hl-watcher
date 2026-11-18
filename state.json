@@ -6,41 +6,41 @@
      "alerted": 15.0,
      "entryPx": 74394.4,
      "lev": 5.0,
-     "liqPx": 124197.3161933169,
-     "notional": 963900.0,
+     "liqPx": 124408.010884214,
+     "notional": 962865.0,
      "peak": 15.0,
      "side": "SHORT",
      "szi": -15.0,
-     "uPnl": 152016.87917
+     "uPnl": 153051.87917
     },
     "xyz:MSFT": {
      "alerted": 1300.0,
      "entryPx": 526.811,
      "lev": 20.0,
-     "liqPx": 1190.4804613028,
-     "notional": 659529.0,
+     "liqPx": 1192.6983510724,
+     "notional": 658268.0,
      "peak": 1300.0,
      "side": "SHORT",
      "szi": -1300.0,
-     "uPnl": 25325.6256
+     "uPnl": 26586.6256
     },
     "xyz:MU": {
      "alerted": 1000.0,
      "entryPx": 765.272,
      "lev": 10.0,
-     "liqPx": 1599.2304663676,
-     "notional": 732280.0,
+     "liqPx": 1601.4660502895,
+     "notional": 730470.0,
      "peak": 1000.0,
      "side": "SHORT",
      "szi": -1000.0,
-     "uPnl": 32992.00815
+     "uPnl": 34802.00815
     }
    },
    "summary": {
-    "accountValue": 514696.089937,
-    "totalNtlPos": 2355709.0
+    "accountValue": 627146.765618,
+    "totalNtlPos": 2351603.0
    },
-   "ts": 1794999977148,
+   "ts": 1795003586867,
    "v": 4
   }
  }
