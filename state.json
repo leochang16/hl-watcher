@@ -1,68 +1,24 @@
 {
  "addresses": {
-  "0x3ed46593ed1fd21f1ca11dd45541d51076957039": {
+  "0xdebbea84972174f44778a00521b1b5faa663abbb": {
    "positions": {
-    "BTC": {
-     "alerted": 15.0,
-     "entryPx": 74394.4,
-     "lev": 5.0,
-     "liqPx": 109866.8629043621,
-     "notional": 954748.5,
-     "peak": 15.0,
-     "side": "SHORT",
-     "szi": -15.0,
-     "uPnl": 161168.37917
-    },
-    "ETH": {
-     "alerted": 300.0,
-     "entryPx": 1750.9,
-     "lev": 5.0,
-     "liqPx": 2059.400618866,
-     "notional": 541821.0,
-     "peak": 300.0,
-     "side": "SHORT",
-     "szi": -300.0,
-     "uPnl": -16551.0
-    },
-    "xyz:GOOGL": {
-     "alerted": 10000.0,
-     "entryPx": 287.0,
+    "xyz:DRAM": {
+     "alerted": 12684.4,
+     "entryPx": 41.30055,
      "lev": 20.0,
-     "liqPx": 357.0800121083,
-     "notional": 2886000.0,
-     "peak": 10000.0,
-     "side": "SHORT",
-     "szi": -10000.0,
-     "uPnl": -16000.0
-    },
-    "xyz:MSFT": {
-     "alerted": 1300.0,
-     "entryPx": 526.811,
-     "lev": 20.0,
-     "liqPx": 1041.5593239099,
-     "notional": 669227.0,
-     "peak": 1300.0,
-     "side": "SHORT",
-     "szi": -1300.0,
-     "uPnl": 15627.6256
-    },
-    "xyz:MU": {
-     "alerted": 1000.0,
-     "entryPx": 765.272,
-     "lev": 10.0,
-     "liqPx": 1397.3053562952,
-     "notional": 728810.0,
-     "peak": 1000.0,
-     "side": "SHORT",
-     "szi": -1000.0,
-     "uPnl": 36462.00815
+     "liqPx": 30.4684182136,
+     "notional": 516737.0872,
+     "peak": 12684.4,
+     "side": "LONG",
+     "szi": 12684.4,
+     "uPnl": -7135.681352
     }
    },
    "summary": {
-    "accountValue": 828132.528693,
-    "totalNtlPos": 5780606.5
+    "accountValue": 139925.323311,
+    "totalNtlPos": 516737.0872
    },
-   "ts": 1795071296962,
+   "ts": 1795077794739,
    "v": 4
   }
  }
