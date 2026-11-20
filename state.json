@@ -3,22 +3,22 @@
   "0xdebbea84972174f44778a00521b1b5faa663abbb": {
    "positions": {
     "xyz:DRAM": {
-     "alerted": 17852.3,
-     "entryPx": 40.17171,
+     "alerted": 22070.3,
+     "entryPx": 39.27438,
      "lev": 20.0,
-     "liqPx": 32.280155352,
-     "notional": 665694.4147,
-     "peak": 17852.3,
+     "liqPx": 32.7161798512,
+     "notional": 784444.6729,
+     "peak": 22070.3,
      "side": "LONG",
-     "szi": 17852.3,
-     "uPnl": -51463.068044
+     "szi": 22070.3,
+     "uPnl": -82352.862644
     }
    },
    "summary": {
-    "accountValue": 103826.272745,
-    "totalNtlPos": 665694.4147
+    "accountValue": 80440.166334,
+    "totalNtlPos": 784444.6729
    },
-   "ts": 1795184935111,
+   "ts": 1795188547058,
    "v": 4
   }
  }
