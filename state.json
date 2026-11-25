@@ -7,18 +7,18 @@
      "entryPx": 34.49992,
      "lev": 20.0,
      "liqPx": null,
-     "notional": 132932.7391,
+     "notional": 132842.4342,
      "peak": 3926.3,
      "side": "LONG",
      "szi": 3926.3,
-     "uPnl": -2524.3117
+     "uPnl": -2614.6166
     }
    },
    "summary": {
-    "accountValue": 5114.174889,
-    "totalNtlPos": 133906.465518
+    "accountValue": 5023.098032,
+    "totalNtlPos": 133816.24046
    },
-   "ts": 1795602920974,
+   "ts": 1795605327695,
    "v": 4
   }
  }
