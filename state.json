@@ -1,24 +1,12 @@
 {
  "addresses": {
   "0xdebbea84972174f44778a00521b1b5faa663abbb": {
-   "positions": {
-    "xyz:DRAM": {
-     "alerted": 3926.3,
-     "entryPx": 34.49992,
-     "lev": 20.0,
-     "liqPx": null,
-     "notional": 136949.344,
-     "peak": 3926.3,
-     "side": "LONG",
-     "szi": 3926.3,
-     "uPnl": 1492.2932
-    }
-   },
+   "positions": {},
    "summary": {
-    "accountValue": 15851.809288,
-    "totalNtlPos": 137932.398625
+    "accountValue": 130.180923,
+    "totalNtlPos": 1986.812794
    },
-   "ts": 1795648313975,
+   "ts": 1795658700302,
    "v": 4
   }
  }
